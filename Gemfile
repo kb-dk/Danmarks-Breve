@@ -58,4 +58,5 @@ gem 'devise_cas_authenticatable'
 
 
 gem 'high_voltage', '~> 3.0.0'
-gem 'kbcookie', '>0.0.0', :path=>'/home/nkh/kbcookie'
+#gem 'kbcookie', '>0.0.0', :path=>'/home/nkh/kbcookie'
+gem 'kbcookie', '>=0.0.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/kbcookie.git'
