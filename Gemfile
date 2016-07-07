@@ -54,3 +54,8 @@ gem 'jettywrapper', '>= 2.0'
 gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
+gem 'devise_cas_authenticatable'
+
+
+gem 'high_voltage', '~> 3.0.0'
+gem 'kbcookie', '>0.0.0', :path=>'/home/nkh/kbcookie'

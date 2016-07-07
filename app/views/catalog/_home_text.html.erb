@@ -1,0 +1,39 @@
+<div class="page-header row">
+  <h2 class="col-md-8 page-heading"><%= t('blacklight.welcome') %></h2>
+
+  <ul class="nav nav-pills col-md-4">
+    <li><a href="https://github.com/projectblacklight/blacklight/">Github</a></li>
+    <li><a href="https://github.com/projectblacklight/blacklight/wiki">Wiki</a></li>
+    <li><a href="https://github.com/projectblacklight/blacklight/releases/tag/v<%= Blacklight::VERSION %>">Release Notes</a></li>
+  </ul>
+
+</div>
+
+<div id="getting-started">
+       <div>
+       <h3>Test cookie</h3>
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="cookieTerms('terms', 'true', 60)"><span aria-hidden="true">&times;</span></button>
+       <p>
+         På Danmarks-Brev bruger vi cookies.
+       </p>
+       <p>
+         <%= link_to 'Læs mere', page_path('politik'), :class =>'btn btn-primary btn-sm' %>
+       </p>
+     </div>
+</div>
+
+<script>
+    $(function() {
+        $('#about a').on('click', function(e) {
+            e.preventDefault();
+
+            if ($('#about-content').html() == "") {
+                $('#about-content').load($(this).attr("href"), function() {
+                    $('#about-content').show();
+                });
+            } else {
+                $('#about-content').toggle();
+            }
+        });
+    });
+</script>

@@ -148,12 +148,12 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 6..128
+  # NKH config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
+  # NKH config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -265,4 +265,24 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+
+  config.cas_base_url = "https://user.kb.dk"
+
+  # you can override these if you need to, but cas_base_url is usually enough
+  config.cas_login_url = "https://user.kb.dk/cas/login"
+  config.cas_logout_url = "https://user.kb.dk/cas/logout"
+  config.cas_validate_url = "https://user.kb.dk/cas/serviceValidate"
+
+  # The CAS specification allows for the passing of a follow URL to be displayed when
+  # a user logs out on the CAS server. RubyCAS-Server also supports redirecting to a
+  # URL via the destination param. Set either of these urls and specify either nil,
+  # 'destination' or 'follow' as the logout_url_param. If the urls are blank but
+  # logout_url_param is set, a default will be detected for the service.
+  config.cas_destination_url = 'http://adl2.kb.dk'
+  config.cas_follow_url = 'http://adl2.kb.dk'
+  config.cas_logout_url_param = 'destination'
+
+  # You can specify the name of the destination argument with the following option.
+  # e.g. the following option will change it from 'destination' to 'url'
+  config.cas_destination_logout_param_name = 'url'
 end
