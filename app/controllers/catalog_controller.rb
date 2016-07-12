@@ -153,7 +153,7 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-    config.add_search_field('afsender') do |field|
+    config.add_search_field( I18n.t('blacklight.search.sender')) do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = { :fq => 'cat_ssi:letter' }
 
@@ -167,7 +167,7 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('modtager') do |field|
+    config.add_search_field( I18n.t('blacklight.search.recipient')) do |field|
       field.solr_parameters = { :fq => 'cat_ssi:letter' }
       field.solr_local_parameters = {
           qf: '$recipient_qf',
@@ -175,7 +175,7 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('afsendelsessted') do |field|
+    config.add_search_field( I18n.t('blacklight.search.senders_location')) do |field|
       field.solr_parameters = { :fq => 'cat_ssi:letter' }
       field.solr_local_parameters = {
           qf: '$sender_location_qf',
@@ -183,7 +183,7 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('modtagelsessted') do |field|
+    config.add_search_field( I18n.t('blacklight.search.recipients_location')) do |field|
       field.solr_parameters = { :fq => 'cat_ssi:letter' }
       field.solr_local_parameters = {
           qf: '$recipient_location_qf',

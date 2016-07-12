@@ -165,6 +165,11 @@ da:
     back_to_bookmarks: 'Tilbage til bogmærker'
 
     search:
+      all_fields: "Alle felter"
+      sender: "Afsender"
+      recipient: "Modtager"
+      senders_location: "Afsendelsessted"
+      recipients_location: "Modtagelsessted"
       bookmarks:
           present: "I bogmærker"
           absent: "Tilføj til bogmærker"
