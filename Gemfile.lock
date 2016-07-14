@@ -43,7 +43,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    autoprefixer-rails (6.3.6.2)
+    autoprefixer-rails (6.3.7)
       execjs
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -52,7 +52,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    blacklight (6.2.0)
+    blacklight (6.1.0)
       bootstrap-sass (~> 3.2)
       deprecation
       globalid
@@ -80,7 +80,7 @@ GEM
     debug_inspector (0.0.2)
     deprecation (1.0.0)
       activesupport
-    devise (4.1.1)
+    devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -88,12 +88,12 @@ GEM
       warden (~> 1.2.3)
     devise-guests (0.5.0)
       devise
-    devise_cas_authenticatable (1.4.0)
+    devise_cas_authenticatable (1.9.2)
       devise (>= 1.2.0)
       rubycas-client (>= 2.2.1)
     erubis (2.7.0)
     execjs (2.7.0)
-    ffi (1.9.10)
+    ffi (1.9.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     high_voltage (3.0.0)
@@ -180,8 +180,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    spring (1.7.1)
-    sprockets (3.6.2)
+    spring (1.7.2)
+    sprockets (3.6.3)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.1.1)
@@ -219,7 +219,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors (~> 2.1, >= 2.1.1)
-  blacklight (~> 6.0)
+  blacklight (~> 6.1.0)
   byebug
   coffee-rails (~> 4.1.0)
   devise
