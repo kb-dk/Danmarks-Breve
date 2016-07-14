@@ -146,7 +146,10 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field 'all_fields', label: I18n.t('blacklight.search.all_fields')
+
+    config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
+      field.solr_parameters = { :fq => 'type_ssi:trunk' }
+    end
 
 
     # Now we see how to over-ride Solr request handler defaults, in this
