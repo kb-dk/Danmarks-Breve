@@ -224,5 +224,7 @@ class CatalogController < ApplicationController
     # Configuration for autocomplete suggestor
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
+
+    config.document_presenter_class = LetterDocumentPresenter
   end
 end
