@@ -4,6 +4,11 @@ GIT
   specs:
     kbcookie (0.0.0)
 
+PATH
+  remote: /home/rails/RubymineProjects/snippet_server
+  specs:
+    snippet_server (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -234,6 +239,7 @@ DEPENDENCIES
   rsolr (~> 1.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  snippet_server (>= 0.1.0)!
   spring
   sqlite3
   therubyracer
