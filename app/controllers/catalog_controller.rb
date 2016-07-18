@@ -1,9 +1,17 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
+  include BlacklightAdvancedSearch::Controller
 
   include Blacklight::Catalog
 
   configure_blacklight do |config|
+    # default advanced config values
+    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    # config.advanced_search[:qt] ||= 'advanced'
+    config.advanced_search[:url_key] ||= 'advanced'
+    config.advanced_search[:query_parser] ||= 'dismax'
+    config.advanced_search[:form_solr_parameters] ||= {}
+
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
@@ -146,7 +154,9 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field 'all_fields', label: I18n.t('blacklight.search.all_fields')
+    config.add_search_field 'all_fields', label: I18n.t('blacklight.search.all_fields') do |field|
+       field.include_in_advanced_search = false
+    end
 
 
     # Now we see how to over-ride Solr request handler defaults, in this
