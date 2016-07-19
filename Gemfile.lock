@@ -4,8 +4,9 @@ GIT
   specs:
     kbcookie (0.0.0)
 
-PATH
-  remote: /home/rails/RubymineProjects/snippet_server
+GIT
+  remote: https://github.com/Det-Kongelige-Bibliotek/snippet-gem.git
+  revision: 470c7a29398729df694ed7783655213756afefc4
   specs:
     snippet_server (0.1.0)
 
