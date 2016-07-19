@@ -4,6 +4,12 @@ GIT
   specs:
     kbcookie (0.0.0)
 
+GIT
+  remote: https://github.com/Det-Kongelige-Bibliotek/snippet-gem.git
+  revision: 470c7a29398729df694ed7783655213756afefc4
+  specs:
+    snippet_server (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -234,6 +240,7 @@ DEPENDENCIES
   rsolr (~> 1.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  snippet_server (>= 0.1.0)!
   spring
   sqlite3
   therubyracer
