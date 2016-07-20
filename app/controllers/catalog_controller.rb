@@ -123,10 +123,11 @@ class CatalogController < ApplicationController
     # config.add_show_field 'lc_callnum_display', label: 'Call number'
     # config.add_show_field 'isbn_t', label: 'ISBN'
 
-    config.add_show_field 'author_ssi', :label => 'Forfatter'
-    config.add_show_field 'publisher_ssi', :label => 'Udgivelsesoplysninger'
-    config.add_show_field 'published_date_ssi', :label => 'Udgivelsesdato'
-    config.add_show_field 'published_place_ssi', :label => 'Udgivelsessted'
+    # Add more fields later
+    config.add_show_field 'sender_tesim', :label => I18n.t('blacklight.search.sender')
+    config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient')
+    config.add_show_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
+    config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
