@@ -1,4 +1,32 @@
 <%# default partial to display solr document fields in catalog show view -%>
+<style>
+  .flex-container {
+    display: -webkit-flex;
+    display: flex;
+    background-color: lightgrey;
+  }
+
+  .flex-item {
+    background-color: white;
+    margin: 10px;
+  }
+
+  .letter-metadata {
+    -webkit-flex: 2;
+    flex: 1;
+  }
+
+  .ocr {
+    -webkit-flex: 1;
+    flex: 2;
+  }
+
+  .facsimile {
+    -webkit-flex: 1;
+    flex: 2;
+  }
+</style>
+
 <dl class="dl-horizontal  dl-invert">
   <% document_show_fields(document).each do |field_name, field| -%>
     <% if should_render_show_field? document, field %>
@@ -11,6 +39,10 @@
   <% opts = Snippet::SnippetServer.split_letter_id(solr_id) %>
   <% opts[:c] = Snippet::SnippetServer.get_collection(solr_id) %>
 
-  <%= Snippet::SnippetServer.render_snippet(opts) %>
 
+  <div class="flex-container">
+    <div class="flex-item letter-metadata">flex item 1</div>
+    <div class="flex-item ocr"><%= Snippet::SnippetServer.render_snippet(opts) %></div>
+    <div class="flex-item facsimile">flex item 3</div>
+  </div>
 </dl>
