@@ -128,6 +128,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient')
     config.add_show_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
     config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
+    config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
