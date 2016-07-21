@@ -14,6 +14,6 @@ class SolrDocument
   # Semantic mappings of solr stored fields. Fields may be multi or
   # single valued. See Blacklight::Document::SemanticFields#field_semantics
   # and Blacklight::Document::SemanticFields#to_semantic_values
-  # Recommendation: Use field names from Dublin Core
+  # Recommendation: Use field names from Dublin Corele
   use_extension(Blacklight::Document::DublinCore)
 end
