@@ -76,7 +76,8 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'author_ssi', :label => 'Forfatter', :single => true, :limit => 10
-    config.add_facet_field 'cat_ssi', :label => 'Kategori'
+    config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
+    config.add_facet_field 'publisher_ssi', :label => 'Publisher'
     # config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
     # config.add_facet_field 'language_facet', label: 'Language', limit: true
     # config.add_facet_field 'lc_1letter_facet', label: 'Call Number'
