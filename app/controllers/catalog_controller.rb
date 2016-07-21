@@ -132,10 +132,12 @@ class CatalogController < ApplicationController
     # config.add_show_field 'lc_callnum_display', label: 'Call number'
     # config.add_show_field 'isbn_t', label: 'ISBN'
 
-    config.add_show_field 'author_ssi', :label => 'Forfatter'
-    config.add_show_field 'publisher_ssi', :label => 'Udgivelsesoplysninger'
-    config.add_show_field 'published_date_ssi', :label => 'Udgivelsesdato'
-    config.add_show_field 'published_place_ssi', :label => 'Udgivelsessted'
+    # Add more fields later
+    config.add_show_field 'sender_tesim', :label => I18n.t('blacklight.search.sender')
+    config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient')
+    config.add_show_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
+    config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
+    config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -157,6 +159,10 @@ class CatalogController < ApplicationController
 
     config.add_search_field 'all_fields', label: I18n.t('blacklight.search.all_fields') do |field|
        field.include_in_advanced_search = false
+    end
+
+    config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
+      field.solr_parameters = { :fq => 'type_ssi:trunk' }
     end
 
 
@@ -232,5 +238,7 @@ class CatalogController < ApplicationController
     # Configuration for autocomplete suggestor
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
+
+    config.document_presenter_class = LetterDocumentPresenter
   end
 end
