@@ -75,9 +75,7 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    config.add_facet_field 'author_ssi', :label => 'Forfatter', :single => true, :limit => 10
     config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
-    config.add_facet_field 'publisher_ssi', :label => 'Publisher'
     # config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
     # config.add_facet_field 'language_facet', label: 'Language', limit: true
     # config.add_facet_field 'lc_1letter_facet', label: 'Call Number'
@@ -157,12 +155,9 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field 'all_fields', label: I18n.t('blacklight.search.all_fields') do |field|
-       field.include_in_advanced_search = false
-    end
-
     config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
-      field.solr_parameters = { :fq => 'type_ssi:trunk' }
+      field.solr_parameters = { :fq => 'cat_ssi:letter OR cat_ssi:letterbook OR cat_ssi:person' }
+      field.include_in_advanced_search = false
     end
 
 
