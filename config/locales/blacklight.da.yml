@@ -171,6 +171,7 @@ da:
       recipient: "Modtager"
       senders_location: "Afsendelsessted"
       recipients_location: "Modtagelsessted"
+      part_of: "Del af"
       bookmarks:
           present: "I bogmærker"
           absent: "Tilføj til bogmærker"
