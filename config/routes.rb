@@ -6,14 +6,20 @@ Rails.application.routes.draw do
   root to: "catalog#index"
     concern :searchable, Blacklight::Routes::Searchable.new
 
-  resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
+  # Rails does not accept dots in the ids, as it appends :format in every rule (.xml, .html etc)
+  # So in constraints, we add this regex for the id (that doesn't allow * in the id), so we
+  # can override the default Rails functionality.
+  resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog', constraints: {:id => /[^\*]+/} do
     concerns :searchable
   end
 
   devise_for :users
   concern :exportable, Blacklight::Routes::Exportable.new
 
-  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
+  # Rails does not accept dots in the ids, as it appends :format in every rule (.xml, .html etc)
+  # So in constraints, we add this regex for the id (that doesn't allow * in the id), so we
+  # can override the default Rails functionality.
+  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog', constraints: {:id => /[^\*]+/} do
     concerns :exportable
   end
 
