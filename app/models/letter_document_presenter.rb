@@ -12,7 +12,10 @@ class LetterDocumentPresenter < Blacklight::DocumentPresenter
       date.first.present? ? title += " DATO: " + date : title += ' DATO: ukendt'
     end
     if (type == 'letterbook')
-      title = @document.first(:volume_title_ssim)
+      title = @document.first(:volume_title_ssim).to_s
+    end
+    if (type == 'person')
+      title = @document.first(:given_name_ssi) +' '+ @document.first(:family_name_ssi)
     end
     title
   end
