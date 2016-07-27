@@ -1,53 +1,57 @@
 <%# default partial to display solr document fields in catalog show view -%>
-<!--TODO: Temporarily leave the CSS here, until we discuss on flexbox and SASS-->
-<style>
-  .flex-container {
-    display: -webkit-flex;
-    display: flex;
-    background-color: lightgrey;
-  }
-
-  .flex-item {
-    background-color: white;
-    margin: 10px;
-  }
-
-  .letter-metadata {
-    -webkit-flex: 2;
-    flex: 1;
-  }
-
-  .ocr {
-    -webkit-flex: 1;
-    flex: 2;
-  }
-
-  .facsimile {
-    -webkit-flex: 1;
-    flex: 2;
-  }
-</style>
-
-
 
 <% solr_id = @document.id %>
 <% opts = Snippet::SnippetServer.split_letter_id(solr_id) %>
 <% opts[:c] = Snippet::SnippetServer.get_collection(solr_id) %>
 
+<script src="/assets/javascript/splitter.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.collapseMetadata').click(function (e) {
+      $(this).closest('.contentContainer').toggleClass('nometa');
+    });
+  });
+</script>
 
-<div class="flex-container">
-  <div class="flex-item letter-metadata">
-    <dl>
-      <% document_show_fields(document).each do |field_name, field| -%>
-          <% if should_render_show_field? document, field %>
-              <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
-              <dd class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_value document, field: field_name %></dd>
-          <% end -%>
-      <% end -%>
-    </dl>
-  </div>
-  <div class="flex-item ocr"><%= Snippet::SnippetServer.render_snippet(opts) %></div>
-  <div class="flex-item facsimile">flex item 3</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 contentContainer">
+      <div class="letter-metadata">
+        <header>
+          <a class="pull-left collapseMetadata"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        </header>
+        <article>
+          <dl>
+            <dh>metadata</dh>
+            <% document_show_fields(document).each do |field_name, field| -%>
+                <% if should_render_show_field? document, field %>
+                    <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
+                    <dd class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_value document, field: field_name %></dd>
+                <% end -%>
+            <% end -%>
+          </dl>
+        </article>
+      </div>
+      <div class="container textAndFacsimileContainer">
+        <div class="row">
+          <div class="ocrContainer">
+            <header>OCR</header>
+            <article class="ocr">
+              <%= Snippet::SnippetServer.render_snippet(opts) %>
+            </article>
+          </div>
+          <div class="facsimile">
+            <div class="resizebar"></div>
+            <header>Faksimile</header>
+            <article>
+              OpenSeadragon goes in here
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </row>
 </div>
 
 

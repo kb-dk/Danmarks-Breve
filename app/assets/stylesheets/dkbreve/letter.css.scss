@@ -1,0 +1,102 @@
+*{
+  box-sizing:border-box;
+}
+.letter-metadata, .ocrContainer, .facsimile{
+  float:left;
+  display:inline-block;
+  transition:width 200ms ease-in;
+  header{
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    padding:10px;
+  }
+  article{
+    padding:10px;
+  }
+}
+
+.letter-metadata {
+  width: 20%;
+  overflow-x:auto; // This sucks, but it might be better than just hidden?
+  header{
+    height:42px; // FIXME: Don't really know why, but the collapse link doesn't span vertically?
+    .glyphicon-chevron-left{
+      transition:transform 200ms ease-in;
+    }
+  }
+  article{
+    //opacity:1;
+    transition:opacity 200ms ease-in;
+  }
+}
+
+.textAndFacsimileContainer{
+  width: 80%;
+  min-height:400px; // This fixed height value need to be set to something reasonable for this screen at load time I guess?
+  float:left;
+  display:inline-block;
+  position:relative;
+  transition:width 200ms ease-in;
+}
+
+.ocrContainer {
+  border-left: 1px solid #ccc;
+  width: 50%;
+  min-width: 150px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+}
+.ocr{
+  overflow-y: auto;
+  position:absolute;
+  bottom:0px;
+  top:42px; /* magic number: height of 1 sub header (.ocrContainer header) */
+}
+
+.facsimile {
+  .resizebar{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width:10px;
+    z-index:3000;
+    cursor:ew-resize;
+    background:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    transition: background-color 200ms linear;
+    select:none;
+    &:hover{
+      background-color:#e4edf5;
+    }
+  }
+  border-left:1px solid #ccc;
+  width:50%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left:50%;
+}
+
+.contentContainer{
+  position:relative;
+  &.nometa{
+    .letter-metadata{
+      width: 4%; //32px;
+      overflow-x: hidden;
+      header .glyphicon-chevron-left{
+        transform:rotate(-180deg);
+      }
+      article{
+        opacity:0;
+      }
+    }
+    .textAndFacsimileContainer{
+      width:96%;
+    }
+  }
+}
