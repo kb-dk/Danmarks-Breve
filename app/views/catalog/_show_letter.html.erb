@@ -4,7 +4,6 @@
 <% opts = Snippet::SnippetServer.split_letter_id(solr_id) %>
 <% opts[:c] = Snippet::SnippetServer.get_collection(solr_id) %>
 
-<script src="/assets/javascript/splitter.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $('.collapseMetadata').click(function (e) {
