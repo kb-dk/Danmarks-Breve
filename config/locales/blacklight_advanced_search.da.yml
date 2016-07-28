@@ -3,10 +3,11 @@ da:
     all: all
     any: any
     form:
-      title: More Search Options
+      title: "Mere søge muligheder"
       search_context: Within search
       limit_criteria_heading_html: "Begræns søgningen"
       query_criteria_heading_html: "Find items that match %{select_menu} of"
       sort_label: "Sort results by"
       start_over: "Start over"
       search_btn: 'Search'
+git 
