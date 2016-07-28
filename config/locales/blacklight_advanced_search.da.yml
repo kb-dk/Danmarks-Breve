@@ -10,4 +10,7 @@ da:
       sort_label: "Sort results by"
       start_over: "Start over"
       search_btn: 'Search'
-git 
+    models:
+        letter: 'Brev'
+        person: 'Person'
+        letterbook: 'Brevudgivelse'
