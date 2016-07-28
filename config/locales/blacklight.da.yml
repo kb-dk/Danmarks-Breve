@@ -205,6 +205,8 @@ da:
         sort:
           relevance: 'Relevans'
           author: 'Forfatter'
+      page_title:
+        title: 'Danmarks Breve'
       pagination:
         title: 'Results navigation'
       pagination_info:
