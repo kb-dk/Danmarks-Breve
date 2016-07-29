@@ -23,7 +23,10 @@ class CatalogController < ApplicationController
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-        rows: 10
+        :qt => 'search',
+        :rows => 10,
+        :fq => 'type_ssi:trunk',
+        :df => 'work_title_tesim'
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -161,9 +164,9 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
+
     config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
-      field.solr_parameters = { :fq => 'cat_ssi:letter OR cat_ssi:letterbook OR cat_ssi:person' }
-      field.include_in_advanced_search = false
+
     end
 
 
