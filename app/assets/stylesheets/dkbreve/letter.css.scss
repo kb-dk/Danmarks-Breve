@@ -83,6 +83,13 @@
   top: 0px;
   bottom: 0px;
   left:50%;
+  article{
+    position:absolute;
+    top:$letter-landingpage-header-height;
+    left:0;
+    right:0;
+    bottom:0;
+  }
 }
 
 .contentContainer{
