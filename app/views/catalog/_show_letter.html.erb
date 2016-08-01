@@ -44,7 +44,40 @@
             <div class="resizebar"></div>
             <header>Faksimile</header>
             <article>
-              OpenSeadragon goes in here
+                <%# OpenSeadragon start %>
+                <div id="kbOSDInstance" style="height:100%">
+                    <div class="kbOSDViewer">
+                        <div class="kbOSDContent"></div>
+                        <div class="kbOSDFooter"></div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    var kbOSDconfig = [{
+                            id: 'kbOSDInstance',
+                            kbHeader: 'This is the title',
+                            //showNavigator: true,
+                            //rtl: true,
+                            //initialPage: 1,
+                            //hidePageNav: true,
+                            defaultZoomLevel: 0, // 0.34
+                            sequenceMode: true,
+                            //indexPage: [
+                            //    {'title' : 'Livet til søs genstand...', 'page' : 1},
+                            //    {'title' : 'Latimeria', 'page' : 4},
+                            //    {'title' : 'En regn', 'page' : 5},
+                            //    {'title' : 'Et 5-finnet blad', 'page' : 12},
+                            //    {'title' : 'Forholdsregler', 'page' : 14}
+                            //],
+                            tileSources: [
+                                'http://dia-test-img-01.kb.dk/online_master_arkiv_3/non-archival/OJA/codheb32/codheb32_12/info.json',
+                                'http://dia-test-img-01.kb.dk/online_master_arkiv_3/non-archival/OJA/codheb32/codheb32_13/info.json',
+                                'http://dia-test-img-01.kb.dk/online_master_arkiv_3/non-archival/OJA/codheb32/codheb32_14/info.json',
+                                'http://dia-test-img-01.kb.dk/online_master_arkiv_3/non-archival/OJA/codheb32/codheb32_15/info.json'
+                            ]
+                        }];
+                </script>
+                <script src="https://static.kb.dk/~hafe/kbOpenSeadragon/js/KbOSD_bundle_min.js"></script>
+                <%# OpenSeadragon end %>
             </article>
           </div>
         </div>
