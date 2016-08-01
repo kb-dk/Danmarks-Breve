@@ -54,7 +54,7 @@
   overflow-y: auto;
   position:absolute;
   bottom:0px;
-  top:42px; /* magic number: height of 1 sub header (.ocrContainer header) */
+  top:$letter-landingpage-header-height;
 }
 
 .facsimile {
