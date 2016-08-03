@@ -10,7 +10,7 @@ module ApplicationHelper
     id = args[:document]['volume_id_ssi']
     return unless id.present?
     # MAke a direct search request to Solr with the volume id
-    volume_url = Net::HTTP.get(URI('http://bifrost-test-01.kb.dk:8080/solr/blacklight-core/select?q='+URI.escape(id)+'&wt=json&indent=true'))
+    volume_url = Net::HTTP.get(URI("#{Rails.application.config_for(:blacklight)["url"]}/select?q="+URI.escape(id)+"&wt=json&indent=true"))
     # Parse the response as JSON
     volume_record_json = JSON.parse(volume_url)
     # Find the volume title in the JSON
