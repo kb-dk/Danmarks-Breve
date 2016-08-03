@@ -1,0 +1,49 @@
+<%# default partial to display solr document fields in catalog show view -%>
+
+<% solr_id = @document.id %>
+<% opts = Snippet::SnippetServer.split_letter_id(solr_id) %>
+<% opts[:c] = "letter_books" %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.collapseMetadata').click(function (e) {
+      $(this).closest('.contentContainer').toggleClass('nometa');
+    });
+  });
+</script>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 contentContainer">
+      <div class="letter-metadata">
+        <header>
+          <a class="pull-left collapseMetadata"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        </header>
+        <article>
+          <dl>
+            <dh>metadata</dh>
+            <% document_show_fields(document).each do |field_name, field| -%>
+                <% if should_render_show_field? document, field %>
+                    <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
+                    <dd class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_value document, field: field_name %></dd>
+                <% end -%>
+            <% end -%>
+          </dl>
+        </article>
+      </div>
+      <div class="container textAndFacsimileContainer">
+        <div class="row">
+          <div class="ocrContainer">
+            <header>Indholdsfortegnelse</header>
+            <article class="ocr">
+              <%= Snippet::SnippetServer.letter_volume(opts) %>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </row>
+</div>
+
+
