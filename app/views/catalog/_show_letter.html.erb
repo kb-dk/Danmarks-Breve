@@ -52,29 +52,16 @@
                     </div>
                 </div>
                 <script type="text/javascript">
-                    var kbOSDconfig = [{
-                            id: 'kbOSDInstance',
-                            kbHeader: 'This is the title',
-                            //showNavigator: true,
-                            //rtl: true,
-                            //initialPage: 1,
-                            //hidePageNav: true,
-                            defaultZoomLevel: 0, // 0.34
-                            sequenceMode: true,
-                            //indexPage: [
-                            //    {'title' : 'Livet til søs genstand...', 'page' : 1},
-                            //    {'title' : 'Latimeria', 'page' : 4},
-                            //    {'title' : 'En regn', 'page' : 5},
-                            //    {'title' : 'Et 5-finnet blad', 'page' : 12},
-                            //    {'title' : 'Forholdsregler', 'page' : 14}
-                            //],
-                            tileSources: [
-                                'http://dia-test-img-01.kb.dk/online_master_arkiv_3/non-archival/OJA/codheb32/codheb32_12/info.json',
-                                'http://dia-test-img-01.kb.dk/online_master_arkiv_3/non-archival/OJA/codheb32/codheb32_13/info.json',
-                                'http://dia-test-img-01.kb.dk/online_master_arkiv_3/non-archival/OJA/codheb32/codheb32_14/info.json',
-                                'http://dia-test-img-01.kb.dk/online_master_arkiv_3/non-archival/OJA/codheb32/codheb32_15/info.json'
-                            ]
-                        }];
+                    var kbOSDconfig = [<%= Snippet::SnippetServer.openSeadragon_snippet(opts) %>];
+
+                    // Converting certain strings => numbers, that OpenSeadragon expects to be numbers, but Sigges serializer returns as strings
+                    // TODO: This ought to be done serverside, but until we get a better serializer, it's easier to do clientside.
+                    // NOTE: If there are more than one kbOSD instance on this page (I don't think there ever will be?), we need to do the following alterations on all config objects!
+                    if ('string' === typeof kbOSDconfig[0].initialPage) { kbOSDconfig[0].initialPage = parseInt(kbOSDconfig[0].initialPage, 10); }
+                    if ('string' === typeof kbOSDconfig[0].defaultZoomLevel) { kbOSDconfig[0].defaultZoomLevel = parseInt(kbOSDconfig[0].defaultZoomLevel, 10); }
+                    $.each(kbOSDconfig[0].indexPage, function (index, indexPage) {
+                      if ('string' === typeof indexPage.page) { index.page = parseInt(index.page, 10); }
+                    });
                 </script>
                 <script src="https://static.kb.dk/~hafe/kbOpenSeadragon/js/KbOSD_bundle_min.js"></script>
                 <%# OpenSeadragon end %>
