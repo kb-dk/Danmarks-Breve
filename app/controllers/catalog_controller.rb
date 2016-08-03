@@ -26,7 +26,6 @@ class CatalogController < ApplicationController
         :qt => 'search',
         :rows => 10,
         :fq => 'type_ssi:trunk',
-        :df => 'work_title_tesim'
     }
 
     # solr path which will be added to solr base url before the other solr params.
