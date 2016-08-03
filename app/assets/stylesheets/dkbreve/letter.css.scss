@@ -19,7 +19,7 @@
   width: 20%;
   overflow-x:auto; // This sucks, but it might be better than just hidden?
   header{
-    height:42px; // FIXME: Don't really know why, but the collapse link doesn't span vertically?
+    height:41px; // FIXME: Don't really know why, but the collapse link doesn't span vertically?
     .collapseMetadata{
       cursor:pointer;
       .glyphicon-chevron-left{
