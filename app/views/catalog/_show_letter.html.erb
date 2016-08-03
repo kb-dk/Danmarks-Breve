@@ -59,9 +59,10 @@
                     // NOTE: If there are more than one kbOSD instance on this page (I don't think there ever will be?), we need to do the following alterations on all config objects!
                     if ('string' === typeof kbOSDconfig[0].initialPage) { kbOSDconfig[0].initialPage = parseInt(kbOSDconfig[0].initialPage, 10); }
                     if ('string' === typeof kbOSDconfig[0].defaultZoomLevel) { kbOSDconfig[0].defaultZoomLevel = parseInt(kbOSDconfig[0].defaultZoomLevel, 10); }
-                    $.each(kbOSDconfig[0].indexPage, function (index, indexPage) {
-                      if ('string' === typeof indexPage.page) { index.page = parseInt(index.page, 10); }
-                    });
+                    //$.each(kbOSDconfig[0].indexPage, function (index, indexPage) {
+                    //  if ('string' === typeof indexPage.page) { index.page = parseInt(index.page, 10); }
+                    //});
+                    delete kbOSDconfig[0].indexPage;
                 </script>
                 <script src="https://static.kb.dk/~hafe/kbOpenSeadragon/js/KbOSD_bundle_min.js"></script>
                 <%# OpenSeadragon end %>
