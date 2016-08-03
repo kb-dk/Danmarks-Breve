@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/Det-Kongelige-Bibliotek/snippet-gem.git
-  revision: 470c7a29398729df694ed7783655213756afefc4
+  revision: 510aea1cc2c2d79c6a48e3344fb0e1a4b01d5fd0
   specs:
     snippet_server (0.1.0)
 
