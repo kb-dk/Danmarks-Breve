@@ -3,8 +3,9 @@
 <% @letter_number = @document["letter_number_isi"] %>
 <% id = @document.id %>
 
-<% if @document['cat_ssi']=='letter'%>
-    <div id='previousNextDocument' class='pagination-search-widgets'>
+<div id='previousNextDocument' class='pagination-search-widgets'>
+
+  <% if @document['cat_ssi']=='letter' %>
       <% if @previous_document || @next_document %>
           <div class="page_links">
             <%= link_to t('views.pagination.previous'), solr_document_path(id: @previous_document) if @previous_document.present? %>
@@ -17,8 +18,15 @@
 
             |
 
-            <%= link_to t('views.pagination.next'), solr_document_path(id: @next_document) if @next_document.present?%>
+            <%= link_to t('views.pagination.next'), solr_document_path(id: @next_document) if @next_document.present? %>
           </div>
       <% end %>
-    </div>
-<% end %>
+  <% end %>
+  <% if current_search_session %>
+      <div class="pull-right search-widgets">
+        <%= link_back_to_catalog class: 'btn' %>
+
+        <%= link_to t('blacklight.search.start_over'), start_over_path(current_search_session.try(:query_params) || {}), id: 'startOverLink', class: 'btn' %>
+      </div>
+  <% end %>
+</div>
