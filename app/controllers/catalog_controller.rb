@@ -214,4 +214,12 @@ class CatalogController < ApplicationController
 
     config.document_presenter_class = LetterDocumentPresenter
   end
+
+  # This overwrites the default blacklight sms_mappings so that
+  # the sms tool is not shown.
+  def sms_mappings
+    {}
+  end
+
+
 end
