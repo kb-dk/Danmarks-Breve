@@ -6,7 +6,7 @@
 /* ADL Variables for overwriting bootstrap
 *************************************************************************************/
 @import "adl/variables";
-
+@import "dkbreve/variables";
 
 /* BOOTSTRAP GEM
 *************************************************************************************/
@@ -84,6 +84,11 @@
 @import "blacklight/modal";
 
 
+/* Danmarks Breve
+*************************************************************************************/
+@import "dkbreve/letter";
+@import "dkbreve/search";
+
 /* ADL
 *************************************************************************************/
 @import "adl/navbar";
@@ -94,19 +99,4 @@
 @import "adl/workTools";
 @import "adl/work";
 @import "adl/footer";
-
-body{
-  margin-top: 49px;
-}
-
-
-
-
-
-
-
-
-
-
-
 

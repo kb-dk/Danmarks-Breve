@@ -11,9 +11,11 @@ da:
     pagination:
       first: '&laquo; Første'
       last: 'Sidste &raquo;'
-      previous: '&laquo; Forrige'
-      next: 'Næste &raquo;'
+      previous: 'Forrige'
+      next: 'Næste'
       truncate: '…'
+      from: 'af'
+      in_volume: 'i bind'
 
     pagination_compact:
       previous: '&laquo; Forrige'
@@ -205,6 +207,8 @@ da:
         sort:
           relevance: 'Relevans'
           author: 'Forfatter'
+      page_title:
+        title: 'Danmarks Breve'
       pagination:
         title: 'Results navigation'
       pagination_info:

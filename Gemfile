@@ -7,6 +7,8 @@ gem 'rails', '4.2.6'
 gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# a general solution for modals
+gem 'bootstrap-modal-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -62,4 +64,4 @@ gem 'devise_cas_authenticatable'
 gem 'high_voltage', '~> 3.0.0'
 gem 'kbcookie', '>=0.0.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/kbcookie.git'
 gem 'snippet_server', '>=0.1.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/snippet-gem.git'
-# gem 'snippet_server', '>=0.1.0', :path => '/home/rails/RubymineProjects/snippet_server'
+
