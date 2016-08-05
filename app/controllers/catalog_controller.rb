@@ -24,8 +24,8 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
         :qt => 'search',
-        :rows => 10,
-        :fq => 'type_ssi:trunk',
+        :rows => 10
+        #:fq => 'type_ssi:trunk'
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -78,6 +78,7 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
+   
 
     # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['cat_ssi', 'language_facet']
     # config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
@@ -135,7 +136,6 @@ class CatalogController < ApplicationController
     # This one uses all the defaults set by the solr request handler. Which
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
-
 
     config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
 
@@ -214,4 +214,12 @@ class CatalogController < ApplicationController
 
     config.document_presenter_class = LetterDocumentPresenter
   end
+
+  # This overwrites the default blacklight sms_mappings so that
+  # the sms tool is not shown.
+  def sms_mappings
+    {}
+  end
+
+
 end
