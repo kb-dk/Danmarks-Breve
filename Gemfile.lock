@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: https://github.com/Det-Kongelige-Bibliotek/snippet-gem.git
-  revision: e21ad4784eb788327ea3a953576040b55bec3886
+  revision: bc4d5b2d3091fec2d7f68dcf6e644be87df30b14
   specs:
-    snippet_server (0.1.0)
+    snippet_server (0.1.1)
 
 GEM
   remote: https://rubygems.org/
