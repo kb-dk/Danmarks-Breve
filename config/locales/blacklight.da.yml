@@ -291,4 +291,5 @@ da:
   models:
     letter: 'Brev'
     person: 'Person'
+    text: 'Tekst'
     letterbook: 'Brevudgivelse'

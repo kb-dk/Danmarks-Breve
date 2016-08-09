@@ -277,4 +277,5 @@ en:
   models:
     work: 'Værk'
     person: 'Person'
+    text: 'Text'
     portrait: 'Portræt'
