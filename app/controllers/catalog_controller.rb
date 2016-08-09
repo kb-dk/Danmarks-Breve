@@ -46,7 +46,7 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'work_title_tesim'
+    config.index.title_field = 'volume_title_tesim'
     config.index.display_type_field = 'cat_ssi'
 
     # solr field configuration for document/show views
