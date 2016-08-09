@@ -1,5 +1,5 @@
-class LetterDocumentPresenter < Blacklight::DocumentPresenter
-  def document_heading
+class LetterIndexPresenter < Blacklight::IndexPresenter
+  def label(field_or_string_or_proc, opts = {})
     type = @document.first(:cat_ssi).to_s
     title = 'Ingen titel'
     if (type == 'letter')
@@ -18,9 +18,5 @@ class LetterDocumentPresenter < Blacklight::DocumentPresenter
       title = @document.first(:given_name_ssi) +' '+ @document.first(:family_name_ssi)
     end
     title
-  end
-
-  def render_document_index_label(field, opts = {})
-    document_heading
   end
 end
