@@ -2,7 +2,8 @@
 
 <% solr_id = @document.id %>
 <% opts = Snippet::SnippetServer.split_letter_id(solr_id) %>
-<% opts[:c] = Snippet::SnippetServer.get_collection(solr_id) %>
+<% opts[:c] = "letter_books" %>
+<% opts[:mode] = "text" %>
 
 <script type="text/javascript">
   $(document).ready(function() {

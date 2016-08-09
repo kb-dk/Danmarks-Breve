@@ -19,7 +19,7 @@
   width: 20%;
   overflow-x:auto; // This sucks, but it might be better than just hidden?
   header{
-    height:42px; // FIXME: Don't really know why, but the collapse link doesn't span vertically?
+    height:41px; // FIXME: Don't really know why, but the collapse link doesn't span vertically?
     .collapseMetadata{
       cursor:pointer;
       .glyphicon-chevron-left{
@@ -54,10 +54,13 @@
   overflow-y: auto;
   position:absolute;
   bottom:0px;
-  top:42px; /* magic number: height of 1 sub header (.ocrContainer header) */
+  top:$letter-landingpage-header-height;
 }
 
 .facsimile {
+  input{
+    line-height:normal; // I don't know where this gets screwed, but it does, so here I am fixing it for kbOSD
+  }
   .resizebar{
     position:absolute;
     top:0;
@@ -83,6 +86,13 @@
   top: 0px;
   bottom: 0px;
   left:50%;
+  article{
+    position:absolute;
+    top:$letter-landingpage-header-height;
+    left:0;
+    right:0;
+    bottom:0;
+  }
 }
 
 .contentContainer{

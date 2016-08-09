@@ -23,7 +23,9 @@ class CatalogController < ApplicationController
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-        rows: 10
+        :qt => 'search',
+        :rows => 10,
+        :fq => '!cat_ssi:text'
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -76,6 +78,7 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
+
 
     # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['cat_ssi', 'language_facet']
     # config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
@@ -135,8 +138,7 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise.
 
     config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
-      field.solr_parameters = { :fq => 'cat_ssi:letter OR cat_ssi:letterbook OR cat_ssi:person' }
-      field.include_in_advanced_search = false
+
     end
 
 
@@ -210,7 +212,7 @@ class CatalogController < ApplicationController
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
 
-    config.document_presenter_class = LetterDocumentPresenter
+   config.index.document_presenter_class = LetterIndexPresenter
 
     # common method for rendering pdfs based on wicked_pdf
     # cache files in the public folder based on their id
@@ -244,4 +246,12 @@ class CatalogController < ApplicationController
     end
 
   end
+
+  # This overwrites the default blacklight sms_mappings so that
+  # the sms tool is not shown.
+  def sms_mappings
+    {}
+  end
+
+
 end
