@@ -25,7 +25,7 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
         :qt => 'search',
         :rows => 10,
-        :fq => 'cat_ssi:letter OR cat_ssi:letterbook'
+        :fq => '!cat_ssi:text'
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -212,7 +212,7 @@ class CatalogController < ApplicationController
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
 
-    config.document_presenter_class = LetterDocumentPresenter
+   config.index.document_presenter_class = LetterIndexPresenter
   end
 
   # This overwrites the default blacklight sms_mappings so that
