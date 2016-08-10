@@ -17,4 +17,12 @@ module ApplicationHelper
     rescue
   end
 
+  def present_snippets args
+    val = args[:value]
+    return unless val.present?
+    term_freq = args[:document]['termfreq(text_tesim, $q)']
+    snippets = ('...' + val.join('...'))
+    "<strong>#{term_freq}</strong> #{snippets}".html_safe
+  end
+
 end
