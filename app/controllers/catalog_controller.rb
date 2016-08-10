@@ -46,7 +46,7 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'work_title_tesim'
+    config.index.title_field = 'volume_title_tesim'
     config.index.display_type_field = 'cat_ssi'
 
     # solr field configuration for document/show views
@@ -78,7 +78,7 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
-
+   
 
     # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['cat_ssi', 'language_facet']
     # config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
@@ -212,7 +212,9 @@ class CatalogController < ApplicationController
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
 
-   config.index.document_presenter_class = LetterIndexPresenter
+    config.index.document_presenter_class = LetterIndexPresenter
+    config.show.document_presenter_class = LetterShowPresenter
+
 
     # common method for rendering pdfs based on wicked_pdf
     # cache files in the public folder based on their id
