@@ -215,6 +215,19 @@ class CatalogController < ApplicationController
     config.index.document_presenter_class = LetterIndexPresenter
     config.show.document_presenter_class = LetterShowPresenter
 
+    # Overwriting this method to enable pdf generation using WickedPDF
+    # Unfortunately the additional_export_formats method was quite difficult t
+    # to use for this use case.
+    def show
+      @response, @document = fetch URI.unescape(params[:id])
+      # @document_empty = !FileServer.doc_has_text(@document.id)
+      respond_to do |format|
+        format.html { setup_next_and_previous_documents }
+        format.json { render json: { response: { document: @document } } }
+        format.pdf { send_pdf(@document, 'text') }
+        additional_export_formats(@document, format)
+      end
+    end
 
     # common method for rendering pdfs based on wicked_pdf
     # cache files in the public folder based on their id
@@ -229,23 +242,10 @@ class CatalogController < ApplicationController
         send_file path.to_s, type: 'application/pdf', disposition: :inline, filename: name+".pdf"
       else
         render pdf: name, footer: { right: '[page] af [topage] sider' },
-               save_to_file: path
+        save_to_file: path
       end
     end
 
-    # Overwriting this method to enable pdf generation using WickedPDF
-    # Unfortunately the additional_export_formats method was quite difficult t
-    # to use for this use case.
-    def show
-      @response, @document = fetch URI.unescape(params[:id])
-      # @document_empty = !FileServer.doc_has_text(@document.id)
-      respond_to do |format|
-        format.html { setup_next_and_previous_documents }
-        format.json { render json: { response: { document: @document } } }
-        format.pdf { send_pdf(@document, 'text') }
-        additional_export_formats(@document, format)
-      end
-    end
 
   end
 
