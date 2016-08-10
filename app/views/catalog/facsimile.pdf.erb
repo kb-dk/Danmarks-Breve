@@ -1,0 +1,23 @@
+<% solr_id = @document.id %>
+<% opts = Snippet::SnippetServer.split_letter_id(solr_id) %>
+<% opts[:c] = Snippet::SnippetServer.get_collection(solr_id) %>
+
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <%# wicked_pdf_stylesheet_link_tag "pdf" -%>
+  <%# wicked_pdf_javascript_include_tag "number_pages" %>
+</head>
+<body>
+<div id="header">
+  <%#= wicked_pdf_image_tag 'logo.png' %>
+</div>
+<div id="pdf_content">
+  <% links = Snippet::SnippetServer.image_links(opts) %>
+  <% links.each do |link| %>
+    <%= image_tag(link) %>
+  <% end %>
+</div>
+</body>
+</html>

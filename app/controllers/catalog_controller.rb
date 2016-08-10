@@ -229,6 +229,14 @@ class CatalogController < ApplicationController
       end
     end
 
+    def facsimile
+      @response, @document = fetch URI.unescape(params[:id])
+      # @document_empty = !FileServer.doc_has_text(@document.id)
+      respond_to do |format|
+        format.pdf { send_pdf(@document, 'image') }
+      end
+    end
+
     # common method for rendering pdfs based on wicked_pdf
     # cache files in the public folder based on their id
     # perhaps using the Solr document modified field
