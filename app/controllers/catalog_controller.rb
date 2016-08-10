@@ -213,6 +213,7 @@ class CatalogController < ApplicationController
     config.autocomplete_path = 'suggest'
 
    config.index.document_presenter_class = LetterIndexPresenter
+   config.show.document_presenter_class = LetterShowPresenter
   end
 
   # This overwrites the default blacklight sms_mappings so that
