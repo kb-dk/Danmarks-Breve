@@ -17,10 +17,4 @@ module ApplicationHelper
     rescue
   end
 
-  def show_volume args
-    id = args[:document]['volume_id_ssi']
-    return unless id.present?
-    link_to args[:value].first, solr_document_path(id)
-  end
-
 end
