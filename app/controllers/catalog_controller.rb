@@ -105,11 +105,10 @@ class CatalogController < ApplicationController
     config.add_index_field 'published_date_ssi', :label => 'Udgivelsesdato'
 
     # this adds basic highlighting to index results
-    config.add_index_field 'volume_title_tesim', highlight: true, :label => I18n.t('blacklight.search.part_of'), helper_method: :show_volume_link, short_form: true, itemprop: :isPartOf, unless: proc { |_context, _field_config, doc | doc.id == doc['volume_id_ssi'] }
-
+    config.add_index_field 'text_tesim', :highlight => true, :label => I18n.t('blacklight.search.index.in_text'), helper_method: :present_snippets, short_form: true
 
     # Letter specific metadata
-    #config.add_index_field 'volume_title_tesim', :label => I18n.t('blacklight.search.part_of'), helper_method: :show_volume_link
+    config.add_index_field 'volume_title_tesim', :label => I18n.t('blacklight.search.part_of'), helper_method: :show_volume_link
     config.add_index_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
     config.add_index_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
 
