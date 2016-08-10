@@ -57,10 +57,11 @@
   top:$letter-landingpage-header-height;
 }
 
+.kbFastNav input{
+  line-height:normal; // I don't know where this gets screwed, but it does, so here I am fixing it for kbOSD
+}
+
 .facsimile {
-  input{
-    line-height:normal; // I don't know where this gets screwed, but it does, so here I am fixing it for kbOSD
-  }
   .resizebar{
     position:absolute;
     top:0;
