@@ -220,7 +220,6 @@ class CatalogController < ApplicationController
     # to use for this use case.
     def show
       @response, @document = fetch URI.unescape(params[:id])
-      # @document_empty = !FileServer.doc_has_text(@document.id)
       respond_to do |format|
         format.html { setup_next_and_previous_documents }
         format.json { render json: { response: { document: @document } } }
@@ -231,7 +230,6 @@ class CatalogController < ApplicationController
 
     def facsimile
       @response, @document = fetch URI.unescape(params[:id])
-      # @document_empty = !FileServer.doc_has_text(@document.id)
       respond_to do |format|
         format.pdf { send_pdf(@document, 'image') }
       end
