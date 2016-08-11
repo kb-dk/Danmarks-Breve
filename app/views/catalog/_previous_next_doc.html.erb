@@ -2,12 +2,18 @@
 <% @next_document = @document["next_id_ssi"] %>
 <% @letter_number = @document["letter_number_isi"] %>
 <% id = @document.id %>
+<% frag = id[/[^-]*$/] %>
 
 <div id='previousNextDocument' class='pagination-search-widgets'>
 
   <% if @document['cat_ssi']=='letter' %>
       <% if @previous_document || @next_document %>
           <div class="page_links">
+
+  <% if @document['volume_id_ssi'].present? %> 
+  <%= link_to "Indhold", "/catalog/" + ERB::Util.url_encode(@document['volume_id_ssi'].to_s) + "#" + frag %> |
+  <% end %>
+
             <%= link_to t('views.pagination.previous'), solr_document_path(id: @previous_document) if @previous_document.present? %>
 
             |
