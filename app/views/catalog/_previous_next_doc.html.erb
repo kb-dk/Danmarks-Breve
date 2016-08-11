@@ -16,13 +16,13 @@
 
             <%= link_to t('views.pagination.previous'), solr_document_path(id: @previous_document) if @previous_document.present? %>
 
-            |
+            <%= "|" if @previous_document.present? %>
 
             <%= @letter_number.to_i %> <%= t('views.pagination.from') %>
             <%= Finder.get_num_of_letters(@document["volume_id_ssi"]) if @document['volume_id_ssi'].present? %>
             <%= t('views.pagination.in_volume') %>
 
-            |
+            <%= "|" if @next_document.present? %>
 
             <%= link_to t('views.pagination.next'), solr_document_path(id: @next_document) if @next_document.present? %>
           </div>

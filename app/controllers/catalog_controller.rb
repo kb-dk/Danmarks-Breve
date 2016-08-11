@@ -209,6 +209,9 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # # except in the relevancy case).
     config.add_sort_field 'score desc', label: 'relevance'
+    config.add_sort_field 'sortby_sender_ssi asc', label: 'sender'
+    config.add_sort_field 'sortby_recipient_ssi asc', label: 'recipient'
+    config.add_sort_field 'year_ssi asc', label: 'year'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
