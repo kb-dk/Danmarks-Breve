@@ -15,7 +15,7 @@
 <div id="pdf_content">
   <% links = Snippet::SnippetServer.image_links(opts) %>
   <% links.each do |link| %>
-    <%= image_tag(link) %>
+    <%= wicked_pdf_image_tag  (link) ,:width => "565",  :height=>"800" %>
   <% end %>
 </div>
 </body>
