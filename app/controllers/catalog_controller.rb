@@ -27,7 +27,11 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
         :qt => 'search',
         :rows => 10,
-        :fq => '!cat_ssi:text'
+        :fq => '!cat_ssi:text',
+        :hl => 'true',
+        :'hl.snippets' => '3',
+        :'hl.simple.pre' => '<em class="highlight" >',
+        :'hl.simple.post' => '</em>'
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -111,11 +115,13 @@ class CatalogController < ApplicationController
     config.add_index_field 'published_place_ssi', :label => 'Udgivelsessted'
     config.add_index_field 'published_date_ssi', :label => 'Udgivelsesdato'
 
+    # this adds basic highlighting to index results
+    config.add_index_field 'text_tesim', :highlight => true, :label => I18n.t('blacklight.search.index.in_text'), helper_method: :present_snippets, short_form: true
+
     # Letter specific metadata
     config.add_index_field 'volume_title_tesim', :label => I18n.t('blacklight.search.part_of'), helper_method: :show_volume_link
     config.add_index_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
     config.add_index_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
-
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

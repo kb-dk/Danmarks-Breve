@@ -249,7 +249,7 @@ da:
       start_over: 'Ny søgning'
       index:
         label: '%{label}:'
-        in_text: 'I tekst:'
+        in_text: 'I tekst'
         download: 'Download:'
         text: 'Tekst'
         facsimile: 'Faksimile'
