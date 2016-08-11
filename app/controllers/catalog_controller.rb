@@ -218,8 +218,47 @@ class CatalogController < ApplicationController
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
 
-   config.index.document_presenter_class = LetterIndexPresenter
-   config.show.document_presenter_class = LetterShowPresenter
+    config.index.document_presenter_class = LetterIndexPresenter
+    config.show.document_presenter_class = LetterShowPresenter
+
+    # Overwriting this method to enable pdf generation using WickedPDF
+    # Unfortunately the additional_export_formats method was quite difficult t
+    # to use for this use case.
+    def show
+      @response, @document = fetch URI.unescape(params[:id])
+      respond_to do |format|
+        format.html { setup_next_and_previous_documents }
+        format.json { render json: { response: { document: @document } } }
+        format.pdf { send_pdf(@document, 'text') }
+        additional_export_formats(@document, format)
+      end
+    end
+
+    def facsimile
+      @response, @document = fetch URI.unescape(params[:id])
+      respond_to do |format|
+        format.pdf { send_pdf(@document, 'image') }
+      end
+    end
+
+    # common method for rendering pdfs based on wicked_pdf
+    # cache files in the public folder based on their id
+    # perhaps using the Solr document modified field
+    def send_pdf(document, type)
+      name = document['work_title_tesim'].first.strip rescue document.id
+      path = Rails.root.join('public', 'pdfs', "#{document.id.gsub('/', '_')}_#{type}.pdf")
+      solr_timestamp = Time.parse(document.to_hash['timestamp'])
+      file_mtime = File.mtime(path) if File.exist? path.to_s
+      # display the cached pdf if solr doc timestamp is older than the file's modified date
+      if File.exist? path.to_s and ((type == 'text' and solr_timestamp < file_mtime) or type == 'image')
+        send_file path.to_s, type: 'application/pdf', disposition: :inline, filename: name+".pdf"
+      else
+        render pdf: name, footer: { right: '[page] af [topage] sider' },
+        save_to_file: path
+      end
+    end
+
+
   end
 
   # This overwrites the default blacklight sms_mappings so that
