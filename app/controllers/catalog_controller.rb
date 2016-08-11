@@ -80,6 +80,15 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
+    config.add_facet_field 'sender_ssim', :label => "Afsender"
+    config.add_facet_field 'recipient_ssim', :label => "Modtager"
+    config.add_facet_field 'year_itsi', label: 'Afsendelsesdato',
+                           range: {
+                               num_segments: 10,
+                               assumed_boundaries: [1900, Time.now.year + 2],
+                               segments: true,
+                               maxlength: 4
+                           }
    
 
     # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['cat_ssi', 'language_facet']
