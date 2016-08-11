@@ -7,9 +7,12 @@
           <% value = render_index_field_value document, field: field_name %>
           <% if value.present? %>
           <dt class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
+              <a id="contentLink" data-ajax-modal="trigger" href="/catalog/%2Fletter_books%2F001541111%2F001541111_000">pop</a>
 	    <dd class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_value document, field: field_name %></dd>
               <% end %>
     <% end -%>
   <% end -%>
 
 </dl>
+
+
