@@ -208,10 +208,10 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # # except in the relevancy case).
-    config.add_sort_field 'score desc', label: 'relevance'
-    config.add_sort_field 'sortby_sender_ssi asc', label: 'sender'
-    config.add_sort_field 'sortby_recipient_ssi asc', label: 'recipient'
-    config.add_sort_field 'year_itsi asc', label: 'year'
+    config.add_sort_field 'score desc', label: I18n.t('blacklight.search.form.sort.relevance')
+    config.add_sort_field 'sortby_sender_ssi asc', label: I18n.t('blacklight.search.form.sort.sender')
+    config.add_sort_field 'sortby_recipient_ssi asc', label: I18n.t('blacklight.search.form.sort.recipient')
+    config.add_sort_field 'year_itsi asc', label: I18n.t('blacklight.search.form.sort.year')
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
