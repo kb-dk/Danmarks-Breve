@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col-md-12 contentContainer">
       <div class="letter-metadata">
-        <header>
+	<header>
           <a class="pull-left collapseMetadata"><span class="glyphicon glyphicon-chevron-left"></span></a>
         </header>
         <article>
@@ -36,14 +36,12 @@
       <div class="container textAndFacsimileContainer">
         <div class="row">
           <div class="ocrContainer">
-            <header>OCR</header>
             <article class="ocr">
               <%= Snippet::SnippetServer.render_snippet(opts) %>
             </article>
           </div>
           <div class="facsimile">
             <div class="resizebar"></div>
-            <header>Faksimile</header>
             <article>
                 <%# OpenSeadragon start %>
                 <div id="kbOSDInstance" style="height:100%">
