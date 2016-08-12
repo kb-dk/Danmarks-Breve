@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
  # Rails.application.routes.draw do
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+  get 'advanced' => 'advanced#index', as: 'advanced_search'
+  match 'advanced/range_limit', :to => 'advanced#range_limit', :as => 'catalog_range_limit', :via => [:get, :post]
  #   get "/pages/:page" => "pages#show"
  # end
 
