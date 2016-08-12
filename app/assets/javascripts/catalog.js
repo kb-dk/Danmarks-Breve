@@ -26,3 +26,9 @@ function checkCookie() {
         document.getElementById("cookie-button").style.display="block";
     }
 }
+
+// hide the range limit in the advanced search limits, since it does not work
+// TODO get it fixed
+$(document).ready(function() {
+    $(".blacklight-year_itsi",".advanced-facet-limits").hide();
+});

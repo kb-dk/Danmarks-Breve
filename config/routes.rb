@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
 
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
+    concerns :range_searchable
+
   end
 
   devise_for :users
@@ -26,6 +29,13 @@ Rails.application.routes.draw do
       delete 'clear'
     end
   end
+
+ # Rails.application.routes.draw do
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+  get 'advanced' => 'advanced#index', as: 'advanced_search'
+  match 'advanced/range_limit', :to => 'advanced#range_limit', :as => 'catalog_range_limit', :via => [:get, :post]
+ #   get "/pages/:page" => "pages#show"
+ # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

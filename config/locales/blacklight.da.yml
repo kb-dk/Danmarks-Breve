@@ -279,6 +279,12 @@ da:
     retrieve: 'hentet fra '
     from: 'fra '
     date: 'Dato'
+
+    range_limit:
+      range_begin: "%{field_label} start"
+      range_end: "%{field_label} slut"
+      submit_limit: 'Begræns'
+      remove_limit: 'fjern'
   catalog:
     show_work:
       no_text: "Der findes ikke en ren tekstversion af dette værk. Klik på ”Faksimile” for at se de indskannede sider."
