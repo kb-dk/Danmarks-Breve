@@ -36,14 +36,24 @@
       <div class="container textAndFacsimileContainer">
         <div class="row">
           <div class="ocrContainer">
-            <header>OCR</header>
+            <!--header>OCR</header-->
+            <div class="downloadLinkContainer">
+              <%= link_to(solr_document_path(document, format: :pdf), class: 'btn btn-default dlButton') do %>
+                  <span class="glyphicon glyphicon-save"></span> Tekst
+              <% end %>
+            </div>
             <article class="ocr">
               <%= Snippet::SnippetServer.render_snippet(opts) %>
             </article>
           </div>
           <div class="facsimile">
             <div class="resizebar"></div>
-            <header>Faksimile</header>
+            <!--header>Faksimile</header-->
+            <div class="downloadLinkContainer">
+              <%= link_to(facsimile_catalog_path(document.id, format: :pdf), class: 'btn btn-default dlButton') do %>
+                  <span class="glyphicon glyphicon-save"></span> Facsimile
+              <% end %>
+            </div>
             <article>
                 <%# OpenSeadragon start %>
                 <div id="kbOSDInstance" style="height:100%">
