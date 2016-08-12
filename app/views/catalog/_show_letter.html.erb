@@ -36,12 +36,14 @@
       <div class="container textAndFacsimileContainer">
         <div class="row">
           <div class="ocrContainer">
+            <header>OCR</header>
             <article class="ocr">
               <%= Snippet::SnippetServer.render_snippet(opts) %>
             </article>
           </div>
           <div class="facsimile">
             <div class="resizebar"></div>
+            <header>Faksimile</header>
             <article>
                 <%# OpenSeadragon start %>
                 <div id="kbOSDInstance" style="height:100%">
