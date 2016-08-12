@@ -4,13 +4,12 @@ Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
 
+  get '/catalog/:id/facsimile' => 'catalog#facsimile', as: 'facsimile_catalog'
+
   root to: "catalog#index"
     concern :searchable, Blacklight::Routes::Searchable.new
 
-  # Rails does not accept dots in the ids, as it appends :format in every rule (.xml, .html etc)
-  # So in constraints, we add this regex for the id (that doesn't allow * in the id), so we
-  # can override the default Rails functionality.
-  resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog', constraints: {:id => /[^\*]+/} do
+  resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
 
@@ -19,10 +18,7 @@ Rails.application.routes.draw do
   devise_for :users
   concern :exportable, Blacklight::Routes::Exportable.new
 
-  # Rails does not accept dots in the ids, as it appends :format in every rule (.xml, .html etc)
-  # So in constraints, we add this regex for the id (that doesn't allow * in the id), so we
-  # can override the default Rails functionality.
-  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog', constraints: {:id => /[^\*]+/} do
+  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
   end
 

@@ -1,15 +1,24 @@
-<% # bookmark/folder functions -%>
+<% # bookmark/folder functions    -%>
 <%= render_document_heading(document, :tag => :h1) %>
 
-<% # bookmark/folder functions -%>
+<% # bookmark/folder functions    -%>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="workNavBar">
-                <div class="btn-group" role="group">
-                  <%= render :partial => 'show_tools' %>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="workNavBar">
+        <div class="btn-group" role="group">
+          <%= render :partial => 'show_tools' %>
         </div>
+        <span style="float: right">
+          Download:
+          <%= link_to(solr_document_path(document, format: :pdf), class: 'btn btn-default') do %>
+            Tekst
+        <% end %>
+          <%= link_to(facsimile_catalog_path(document.id, format: :pdf), class: 'btn btn-default') do %>
+              Facsimile
+        <% end %>
+        </span>
+      </div>
     </div>
+  </div>
 </div>

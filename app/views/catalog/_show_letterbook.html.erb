@@ -22,7 +22,6 @@
         </header>
         <article>
           <dl>
-            <dh>metadata</dh>
             <% document_show_fields(document).each do |field_name, field| -%>
                 <% if should_render_show_field? document, field %>
                     <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
@@ -34,8 +33,6 @@
       </div>
       <div class="container textAndFacsimileContainer">
         <div class="row">
-          
-            <header>Indholdsfortegnelse</header>
             <article class="ocr">
               <%= Snippet::SnippetServer.letter_volume(opts) %>
             </article>

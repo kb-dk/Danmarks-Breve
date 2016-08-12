@@ -17,12 +17,11 @@
   <div class="row">
     <div class="col-md-12 contentContainer">
       <div class="letter-metadata">
-        <header>
+	<header>
           <a class="pull-left collapseMetadata"><span class="glyphicon glyphicon-chevron-left"></span></a>
         </header>
         <article>
           <dl>
-            <dh>metadata</dh>
             <% document_show_fields(document).each do |field_name, field| -%>
                 <% if should_render_show_field? document, field %>
                     <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
@@ -37,14 +36,12 @@
       <div class="container textAndFacsimileContainer">
         <div class="row">
           <div class="ocrContainer">
-            <header>OCR</header>
             <article class="ocr">
               <%= Snippet::SnippetServer.render_snippet(opts) %>
             </article>
           </div>
           <div class="facsimile">
             <div class="resizebar"></div>
-            <header>Faksimile</header>
             <article>
                 <%# OpenSeadragon start %>
                 <div id="kbOSDInstance" style="height:100%">

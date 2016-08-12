@@ -207,6 +207,9 @@ da:
         sort:
           relevance: 'Relevans'
           author: 'Forfatter'
+          sender: 'Afsender'
+          recipient: 'Modtager'
+          year: 'Dato'
       page_title:
         title: 'Danmarks Breve'
       pagination:
