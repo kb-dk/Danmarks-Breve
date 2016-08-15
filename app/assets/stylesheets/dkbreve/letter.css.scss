@@ -71,25 +71,6 @@
 }
 
 .facsimile {
-  .resizebar{
-    position:absolute;
-    top:0;
-    left:0;
-    bottom:0;
-    width:10px;
-    z-index:3000;
-    cursor:ew-resize;
-    background:none;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
-    transition: background-color 200ms linear;
-    select:none;
-    &:hover{
-      background-color:#e4edf5;
-    }
-  }
   border-left:1px solid #ccc;
   width:50%;
   position: absolute;
