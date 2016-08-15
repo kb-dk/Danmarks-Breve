@@ -127,8 +127,8 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     # Letter specific metadata
-    config.add_show_field 'sender_tesim', :label => I18n.t('blacklight.search.sender')
-    config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient')
+    config.add_show_field 'sender_tesim', :label => I18n.t('blacklight.search.sender'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
+    config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
     config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
     config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
