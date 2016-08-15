@@ -23,7 +23,10 @@ function getCookie(cname) {
 function checkCookie() {
     var cookie = getCookie("terms");
     if (cookie == ""){
-        document.getElementById("cookie-button").style.display="block";
+        var cookieButtonElem = document.getElementById("cookie-button");
+        if (cookieButtonElem) {
+            cookieButtonElem.style.display = "block";
+        }
     }
 }
 

@@ -19,9 +19,10 @@
   width: 20%;
   overflow-x:auto; // This sucks, but it might be better than just hidden?
   header{
-    height:41px; // FIXME: Don't really know why, but the collapse link doesn't span vertically?
+    height:33px; // FIXME: Don't really know why, but the collapse link doesn't span vertically?
     .collapseMetadata{
       cursor:pointer;
+      margin:-2px; // Positioning it vertically centered the ugly way? :-/
       .glyphicon-chevron-left{
         transition:transform 200ms ease-in;
       }
@@ -40,6 +41,14 @@
   display:inline-block;
   position:relative;
   transition:width 200ms ease-in;
+  .downloadLinkContainer{
+    text-align:left;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    .dlButton{
+      border:none;
+    }
+  }
 }
 
 .ocrContainer {
@@ -57,10 +66,11 @@
   top:$letter-landingpage-header-height;
 }
 
+.kbFastNav input{
+  line-height:normal; // I don't know where this gets screwed, but it does, so here I am fixing it for kbOSD
+}
+
 .facsimile {
-  input{
-    line-height:normal; // I don't know where this gets screwed, but it does, so here I am fixing it for kbOSD
-  }
   .resizebar{
     position:absolute;
     top:0;

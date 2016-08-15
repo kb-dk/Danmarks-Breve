@@ -110,8 +110,8 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'author_ssi', :label => 'Forfatter'
-    config.add_index_field 'publisher_ssi', :label => 'Udgivelsesoplysninger'
+    config.add_index_field 'author_name_tesim', :label => 'Forfatter'
+    config.add_index_field 'publisher_name_ssi', :label => 'Udgiver'
     config.add_index_field 'published_place_ssi', :label => 'Udgivelsessted'
     config.add_index_field 'published_date_ssi', :label => 'Udgivelsesdato'
 
@@ -131,8 +131,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
     config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
+    config.add_show_field 'author_name_tesim', :label => 'Forfatter'
     config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
-    config.add_show_field 'publisher_ssi', :label => 'Udgiver'
+    config.add_show_field 'publisher_name_ssi', :label => 'Udgiver'
     config.add_show_field 'published_date_ssi', :label => 'Udgivelsesdato'
     config.add_show_field 'published_place_ssi', :label => 'Udgivelsessted'
 

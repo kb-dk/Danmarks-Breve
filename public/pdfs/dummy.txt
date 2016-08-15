@@ -1,0 +1,1 @@
+Yes Git - this directory belongs to the repository, even though it is empty!
