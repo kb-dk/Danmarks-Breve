@@ -3,8 +3,8 @@ class LetterIndexPresenter < Blacklight::IndexPresenter
     type = @document.first(:cat_ssi).to_s
     title = 'Ingen titel'
     if (type == 'letter')
-      recipient = @document.first(:recipient_ssim).to_s
-      sender = @document.first(:sender_ssim).to_s
+      recipient = @document.first(:recipient_tesim).to_s
+      sender = @document.first(:sender_etsim).to_s
       date = @document.first(:date_ssim).to_s
       title = "BREV "
       recipient.first.present? ? title += "TIL: " + recipient : title = 'TIL: ukendt'
