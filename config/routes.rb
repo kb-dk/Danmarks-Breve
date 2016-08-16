@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :show_content;
+
  # Rails.application.routes.draw do
  #   get "/pages/:page" => "pages#show"
  # end

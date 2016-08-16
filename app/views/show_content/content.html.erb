@@ -1,0 +1,21 @@
+<% solr_id = @document['id'] %>
+<% opts = Snippet::SnippetServer.split_letter_id(solr_id) %>
+<% opts[:c] = "letter_books" %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.collapseMetadata').click(function (e) {
+            $(this).closest('.contentContainer').toggleClass('nometa');
+        });
+    });
+</script>
+
+  <div class="row">
+          <div class="container textAndFacsimileContainer">
+          <header>Indholdsfortegnelse</header>
+          <article class="ocr">
+            <%= Snippet::SnippetServer.letter_volume(opts) %>
+          </article>
+      </div>
+  </div>
+
