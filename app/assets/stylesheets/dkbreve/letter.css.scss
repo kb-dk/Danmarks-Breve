@@ -73,6 +73,7 @@
 .facsimile {
   border-left:1px solid #ccc;
   width:50%;
+  min-width:240px;
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -84,6 +85,10 @@
     right:0;
     bottom:0;
   }
+}
+
+body{
+  min-width:620px;
 }
 
 .contentContainer{
