@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :show_content;
+
  # Rails.application.routes.draw do
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   get 'advanced' => 'advanced#index', as: 'advanced_search'
