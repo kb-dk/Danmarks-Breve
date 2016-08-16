@@ -27,7 +27,7 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
         :qt => 'search',
         :rows => 10,
-        :fq => '!cat_ssi:text',
+        :fq => ['!cat_ssi:text', '!cat_ssi:person'],
         :hl => 'true',
         :'hl.snippets' => '3',
         :'hl.simple.pre' => '<em class="highlight" >',
