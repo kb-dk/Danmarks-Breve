@@ -71,6 +71,12 @@ h1[itemprop=name]{
   position: absolute;
   top: 0px;
   bottom: 0px;
+  #ocrFullscreenButton{
+    border:0;
+    margin-top:1px; // FIXME: This is crap, I don't know why it doesn't act like the other buttons, but it don't. I have no more time for this unfortunately (AKA: Congratulations with your new job next frontender! ;-) )
+    padding-bottom:5px;
+    outline:none;
+  }
 }
 .ocr{
   overflow-y: auto;
