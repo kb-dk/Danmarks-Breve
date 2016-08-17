@@ -97,6 +97,8 @@ body{
 .contentContainer{
   position:relative;
   margin-left: -15px; // compensates from a lacking row class
+  overflow-y:hidden;
+  max-height:400px; // This fixed height value need to be set to something reasonable for this screen at load time I guess?
   &.nometa{
     .letter-metadata{
       width: 4%; //32px;
