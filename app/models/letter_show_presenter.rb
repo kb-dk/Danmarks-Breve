@@ -5,7 +5,7 @@ class LetterShowPresenter < Blacklight::ShowPresenter
     if (type == 'letter')
       recipient = @document.first(:recipient_tesim).to_s
       sender = @document.first(:sender_tesim).to_s
-      date = @document.first(:date_tesim).to_s
+      date = @document.first(:date_ssim).to_s
       title = "BREV "
       recipient.first.present? ? title += "TIL: " + recipient : title = 'TIL: ukendt'
       sender.first.present? ? title += " FRA: " + sender : title += ' FRA: ukendt'

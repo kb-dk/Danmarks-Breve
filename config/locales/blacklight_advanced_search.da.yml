@@ -1,15 +1,15 @@
 da:
   blacklight_advanced_search:
-    all: all
-    any: any
+    all: alle
+    any: mindst en
     form:
-      title: "Mere søge muligheder"
+      title: "Avanceret søgning"
       search_context: Within search
       limit_criteria_heading_html: "Begræns søgningen"
-      query_criteria_heading_html: "Find items that match %{select_menu} of"
-      sort_label: "Sort results by"
-      start_over: "Start over"
-      search_btn: 'Search'
+      query_criteria_heading_html: "Find emner, der matcher %{select_menu} af"
+      sort_label: "Sorter efter"
+      start_over: "Ny søgning"
+      search_btn: 'Søg'
     models:
         letter: 'Brev'
         person: 'Person'
