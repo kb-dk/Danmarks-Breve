@@ -1,6 +1,9 @@
 *{
   box-sizing:border-box;
 }
+#header-navbar.navbar{
+  margin-bottom:0;
+}
 .letter-metadata, .ocrContainer, .facsimile{
   float:left;
   display:inline-block;
@@ -93,6 +96,7 @@ body{
 
 .contentContainer{
   position:relative;
+  margin-left: -15px; // compensates from a lacking row class
   &.nometa{
     .letter-metadata{
       width: 4%; //32px;
@@ -107,5 +111,32 @@ body{
     .textAndFacsimileContainer{
       width:96%;
     }
+  }
+}
+
+footer.pageFooter.dkbreveFooter{
+  margin:0;
+  padding:20px 0 10px 0;
+  a{
+    color:#666;
+    text-decoration:none;
+    &:hover{
+      text-decoration:underline;
+      color:#000;
+    }
+  }
+  address{
+    color:#666;
+    margin-bottom:0;
+  }
+  ul{
+    margin-bottom: 0;
+  }
+  img{
+    width:32px;
+  }
+  hr{
+    margin-top:7px;
+    margin-bottom:7px;
   }
 }
