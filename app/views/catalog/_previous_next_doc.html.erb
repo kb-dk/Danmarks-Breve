@@ -10,8 +10,8 @@
       <% if @previous_document || @next_document %>
           <div class="page_links">
 
-  <% if @document['volume_id_ssi'].present? %> 
-  <%= link_to "Indhold", "/catalog/" + ERB::Util.url_encode(@document['volume_id_ssi'].to_s) + "#" + frag %> |
+  <% if @document['volume_id_ssi'].present? %>
+  <%= link_to "Volume", "/show_content/" + ERB::Util.url_encode(@document['volume_id_ssi'].to_s), "id"=>"contentLink", "data-ajax-modal" => "trigger"%> |
   <% end %>
 
             <%= link_to t('views.pagination.previous'), solr_document_path(id: @previous_document) if @previous_document.present? %>
