@@ -1,6 +1,9 @@
 *{
   box-sizing:border-box;
 }
+#header-navbar.navbar{
+  margin-bottom:0;
+}
 .letter-metadata, .ocrContainer, .facsimile{
   float:left;
   display:inline-block;
@@ -107,6 +110,7 @@
 
 .contentContainer{
   position:relative;
+  margin-left: -15px; // compensates from a lacking row class
   &.nometa{
     .letter-metadata{
       width: 4%; //32px;
@@ -122,4 +126,9 @@
       width:96%;
     }
   }
+}
+
+footer.pageFooter{
+  margin:0;
+  padding:0 !important; // XXX XXX See if you can get rid of this !important
 }
