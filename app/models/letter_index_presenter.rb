@@ -9,7 +9,7 @@ class LetterIndexPresenter < Blacklight::IndexPresenter
       title = "BREV "
       recipient.first.present? ? title += "TIL: " + recipient : title = 'TIL: ukendt'
       sender.first.present? ? title += " FRA: " + sender : title += ' FRA: ukendt'
-      date.first.present? ? title += " DATO: " + date : title += ' DATO: ukendt'
+      date.first.present? ? title += " (" + date + ")" : title += ' (dato ukendt)'
     end
     if (type == 'letterbook')
       title = @document.first(:volume_title_ssim).to_s

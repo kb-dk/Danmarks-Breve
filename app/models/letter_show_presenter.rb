@@ -10,13 +10,13 @@ class LetterShowPresenter < Blacklight::ShowPresenter
       title = "BREV "
       recipient.first.present? ? title += "TIL: " + recipient : title = 'TIL: ukendt'
       sender.first.present? ? title += " FRA: " + sender : title += ' FRA: ukendt'
-      date.first.present? ? title += " DATO: " + date : title += ' DATO: ukendt'
+      date.first.present? ? title += " (" + date + ")" : title += ' (dato ukendt)'
     end
     if (type == 'letterbook')
       title = @document.first(:volume_title_ssim).to_s
     end
     if (type == 'text' and node=='trunk')
-      title = @document.first(:text_tesim).to_s[0..40] + " ... "
+      title = @document.first(:text_tesim).to_s[0..35] + "... "
     end
     if (type == 'person')
       title = @document.first(:given_name_ssi) +' '+ @document.first(:family_name_ssi)
