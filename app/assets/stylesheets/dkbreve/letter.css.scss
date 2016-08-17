@@ -15,6 +15,16 @@
   }
 }
 
+#header-navbar{
+  margin-bottom:0;
+}
+h1[itemprop=name]{
+  font-size:25px;
+}
+#content #previousNextDocument{
+  padding:0px; // It has got all the spacing it needs from the margin-bottom of the top logo!
+}
+
 .letter-metadata {
   width: 20%;
   overflow-x:auto; // This sucks, but it might be better than just hidden?
