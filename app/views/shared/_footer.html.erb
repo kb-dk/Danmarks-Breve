@@ -1,20 +1,10 @@
 
-<footer class="pageFooter">
+<footer class="pageFooter dkbreveFooter">
 
   <div class="container">
 
     <div class="row">
       <div class="col-sm-3">
-
-        <h2>Om Danmarks Breve</h2>
-        <ul class="list-unstyled">
-          <li><%= link_to 'Om Danmarks Breve', page_path('about') , class:'' %></li>
-          <li><%= link_to 'Cookie- og Privatlivspolitik', page_path('politik'), class:'' %></li>
-        </ul>
-      </div>
-      <div class="col-sm-6">
-
-        <h2 class="">Det Kongelige Bibliotek</h2>
         <div class="media">
           <a href="http://www.kb.dk" target="_blank">
             <div class="media-left">
@@ -25,13 +15,17 @@
             </div>
           </a>
         </div>
-
+      </div>
+      <div class="col-sm-6">
+        <ul class="list-unstyled">
+          <li><%= link_to 'Om Danmarks Breve', page_path('about') , class:'' %></li>
+          <li><%= link_to 'Cookie- og Privatlivspolitik', page_path('politik'), class:'' %></li>
+        </ul>
       </div>
       <div class="col-sm-3">
-        <h2 class="">Kontakt os</h2>
         <hr class="visible-xs-block"/>
         <address>
-          <strong>Det Kongelige Bibliotek</strong><br>
+          Kontakt<br>
           <a href="mailto:info@adl.dk"><span class="glyphicon glyphicon-envelope"></span> info@kb.dk</a>
         </address>
 

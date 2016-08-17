@@ -128,7 +128,29 @@
   }
 }
 
-footer.pageFooter{
+footer.pageFooter.dkbreveFooter{
   margin:0;
-  padding:0 !important; // XXX XXX See if you can get rid of this !important
+  padding:20px 0 10px 0;
+  a{
+    color:#666;
+    text-decoration:none;
+    &:hover{
+      text-decoration:underline;
+      color:#000;
+    }
+  }
+  address{
+    color:#666;
+    margin-bottom:0;
+  }
+  ul{
+    margin-bottom: 0;
+  }
+  img{
+    width:32px;
+  }
+  hr{
+    margin-top:7px;
+    margin-bottom:7px;
+  }
 }
