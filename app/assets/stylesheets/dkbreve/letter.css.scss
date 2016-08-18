@@ -92,7 +92,7 @@ h1[itemprop=name]{
   }
   &:-webkit-full-screen{
     padding:0 10%;
-    max-width:800px;
+    max-width:57em;
     background-color:#fff;
     .escFullScreenButton{
       display:block;
@@ -100,7 +100,7 @@ h1[itemprop=name]{
   }
   &:-moz-full-screen{
     padding:0 10%;
-    max-width:800px;
+    max-width:57em;
     background-color:#fff;
     .escFullScreenButton{
       display:block;
@@ -108,7 +108,7 @@ h1[itemprop=name]{
   }
   &:-ms-fullscreen{
     padding:0 10%;
-    max-width:800px;
+    max-width:57em;
     background-color:#fff;
     .escFullScreenButton{
       display:block;
@@ -116,7 +116,7 @@ h1[itemprop=name]{
   }
   &:fullscreen{
     padding:20px 10%;
-    max-width:800px;
+    max-width:57em;
     background-color:#fff;
     .escFullScreenButton{
       display:block;
