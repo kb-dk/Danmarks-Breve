@@ -98,6 +98,17 @@ window.dkBreve = (function (window, $, undefined) {
 
                 $('.ocr').scroll(this.onOcrScroll);
             }
+        },
+        closeFullScreen : function () {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
         }
     };
 
@@ -142,4 +153,6 @@ $(document).ready(function () {
             }
         }
     });
+
+    $('.escFullScreenButton').click(dkBreve.closeFullScreen);
 });

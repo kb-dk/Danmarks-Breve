@@ -83,6 +83,32 @@ h1[itemprop=name]{
   position:absolute;
   bottom:0px;
   top:$letter-landingpage-header-height;
+  .escFullScreenButton{
+    display:none;
+    position:fixed;
+    top:30px;
+    right:30px;
+    opacity:0.8;
+  }
+  &:-webkit-full-screen{
+    padding:0 10%;
+    max-width:800px;
+    .escFullScreenButton{
+      display:block;
+    }
+  }
+  &:-moz-full-screen{
+    padding:0 10%;
+    max-width:800px;
+  }
+  &:-ms-fullscreen{
+    padding:0 10%;
+    max-width:800px;
+  }
+  &:fullscreen{
+    padding:20px 10%;
+    max-width:800px;
+  }
 }
 
 .kbFastNav input{
