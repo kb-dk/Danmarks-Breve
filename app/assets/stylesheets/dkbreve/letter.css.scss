@@ -100,14 +100,23 @@ h1[itemprop=name]{
   &:-moz-full-screen{
     padding:0 10%;
     max-width:800px;
+    .escFullScreenButton{
+      display:block;
+    }
   }
   &:-ms-fullscreen{
     padding:0 10%;
     max-width:800px;
+    .escFullScreenButton{
+      display:block;
+    }
   }
   &:fullscreen{
     padding:20px 10%;
     max-width:800px;
+    .escFullScreenButton{
+      display:block;
+    }
   }
 }
 
