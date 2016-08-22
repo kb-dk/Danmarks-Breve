@@ -7,7 +7,7 @@
     @extend .pull-right;
   }
   .btn-group{
-    .contentSearch, .tableOfContent, #emailLink, #citationLink, #feedbackLink{
+    .contentSearch, .tableOfContent, #citationLink, #feedbackLink{
       @extend .btn;
       @extend .btn-default;
       border: none;
@@ -17,14 +17,7 @@
         background: $gray-lighter;
       }
     }
-    #emailLink{
-      &:before{
-        @extend .glyphicon-envelope;
-        @extend .glyphicon;
-        position: relative;
-        padding-right:4px;
-      }
-    }
+
     #citationLink{
       &:before{
         @extend .glyphicon-pencil;
@@ -123,14 +116,6 @@ span.constraint{
 
 // bookmark page
 .bookmarksTools{
-  #emailLink{
-    &:before{
-      @extend .glyphicon-envelope;
-      @extend .glyphicon;
-      position: relative;
-      padding-right:4px;
-    }
-  }
   #citationLink{
     &:before{
       @extend .glyphicon-pencil;
