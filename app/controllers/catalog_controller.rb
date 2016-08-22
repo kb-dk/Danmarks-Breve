@@ -237,6 +237,9 @@ class CatalogController < ApplicationController
     config.index.document_presenter_class = LetterIndexPresenter
     config.show.document_presenter_class = LetterShowPresenter
 
+    config.show.document_actions.delete(:sms)
+    config.show.document_actions.delete(:email)
+
     # Overwriting this method to enable pdf generation using WickedPDF
     # Unfortunately the additional_export_formats method was quite difficult t
     # to use for this use case.
@@ -275,12 +278,6 @@ class CatalogController < ApplicationController
     end
 
 
-  end
-
-  # This overwrites the default blacklight sms_mappings so that
-  # the sms tool is not shown.
-  def sms_mappings
-    {}
   end
 
 
