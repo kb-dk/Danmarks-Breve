@@ -98,6 +98,34 @@ window.dkBreve = (function (window, $, undefined) {
 
                 $('.ocr').scroll(this.onOcrScroll);
             }
+        },
+        onWindowResize : function () {
+            this.setContentHeight($(window).innerHeight() - this.getFooterAndHeaderHeight());
+        },
+        closeFullScreen : function () {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        },
+        getFooterAndHeaderHeight : function () {
+            return $('.page_links').outerHeight() +
+                $('.workNavBar').outerHeight() +
+                $('h1[itemprop=name]').outerHeight() +
+                $('.search-widgets').outerHeight() + // FIXME: According to me this shouldn't be necessary, since these are pulled right and thereby out of the flow, but I can observe that the end result lacks approx 32 px.? /HAFE
+                $('#user-util-collapse').outerHeight() +
+                $('footer.pageFooter').outerHeight();
+        },
+        setContentHeight : function (height) {
+            if (height > 200) {
+                $('.contentContainer').css('maxHeight', height);
+                $('.textAndFacsimileContainer').css('minHeight', height);
+            }
         }
     };
 
@@ -108,3 +136,47 @@ $(document).on('kbosdready', function(e) {
     dkBreve.onKbOSDReady(e.detail.kbosd);
 });
 
+$(document).ready(function () {
+    var headerFooterHeight = dkBreve.getFooterAndHeaderHeight(),
+        windowHeight = $(window).innerHeight(),
+        contentHeight = windowHeight - headerFooterHeight;
+    dkBreve.setContentHeight(contentHeight);
+
+    // set up handler for ocr fullscreen
+    $('#ocrFullscreenButton').click(function(e) {
+        // Copy/Pasted from http://stackoverflow.com/questions/7130397/how-do-i-make-a-div-full-screen /HAFE
+        // if already full screen; exit
+        // else go fullscreen
+        if (
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
+        ) {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        } else {
+            element = $('.ocr').get(0);
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+        }
+    });
+
+    $('.escFullScreenButton').click(dkBreve.closeFullScreen);
+
+    $(window).resize(function () { dkBreve.onWindowResize.call(dkBreve); });
+});
