@@ -15,7 +15,7 @@ da:
       next: 'Næste'
       truncate: '…'
       from: 'af'
-      in_volume: 'i bind'
+      in_volume: ' '
 
     pagination_compact:
       previous: '&laquo; Forrige'
