@@ -6,7 +6,7 @@ class LetterIndexPresenter < Blacklight::IndexPresenter
       recipient = @document.first(:recipient_tesim).to_s
       sender = @document.first(:sender_tesim).to_s
       date = @document.first(:date_ssim).to_s
-      title = "BREV "
+      title = ""
       recipient.first.present? ? title += "TIL: " + recipient : title = 'TIL: ukendt'
       sender.first.present? ? title += " FRA: " + sender : title += ' FRA: ukendt'
       date.first.present? ? title += " (" + date + ")" : title += ' (dato ukendt)'
