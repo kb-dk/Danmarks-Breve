@@ -257,6 +257,7 @@ da:
         text: 'Tekst'
         facsimile: 'Faksimile'
         show_more: 'Vis mere'
+        edition: 'Udgivelse'
       show:
         title: '%{document_title} - %{application_name}'
         label: '%{label}:'
