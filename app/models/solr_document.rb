@@ -29,16 +29,16 @@ class SolrDocument
     date.first.present? ? title += " (" + date.to_s + ")" : title += ' (dato ukendt)'
 
     volume = Finder.get_doc_by_id(doc['volume_id_ssi']).first
-    auth = volume['author_name_tesim'].to_sentence(:last_word_connector => ' og ').to_s
+    auth = volume['author_name_tesim'].to_sentence(:two_words_connector => ' og ', :last_word_connector => ' og ')
 
     cite = ""
-    cite +=  auth  + ", " unless auth.blank?
+    cite +=  auth.to_s  + ", " unless auth.to_s.blank?
     cite +=  volume['published_date_ssi'] + ". " unless volume['published_date_ssi'].blank?
     cite +=  title
     cite +=  " i: <i>"+volume['volume_title_tesim'].first + "</i>, " unless volume['volume_title_tesim'].blank?
-    cite +=  "side "+doc['page_ssi'] + ", " unless doc['page_ssi'].blank?
-    cite +=  volume['published_place_ssi'] + ": " unless volume['published_place_ssi'].blank?
-    cite +=  volume['publisher_name_ssi'] + " " unless volume['publisher_name_ssi'].blank?
+    cite +=  "side "+doc['page_ssi'] + ". " unless doc['page_ssi'].blank?
+    cite +=  volume['publisher_name_ssi'] + ", " unless volume['publisher_name_ssi'].blank?
+    cite +=  volume['published_place_ssi'] + ". " unless volume['published_place_ssi'].blank?
 
     cite.html_safe
 

@@ -114,9 +114,9 @@ da:
       librarian_view: 'Librarian View'
       clear: 'Clear'
       feedback: "Fejlrapportering"
+      citation: "Referera"
 
     citation:
-      Citation: ''
       apa: ''
 
     email:
