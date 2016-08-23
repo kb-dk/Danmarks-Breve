@@ -243,6 +243,7 @@ en:
         facsimile: 'Faksimile'
         show_more: 'Vis mere'
         edition: 'Udgivelse'
+        rex: "Bestil i Rex"
       show:
         title: '%{document_title} - %{application_name}'
         label: '%{label}:'
