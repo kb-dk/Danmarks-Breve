@@ -29,7 +29,7 @@
                 <% end -%>
             <% end -%>
 	    <dt>
-	      <%= link_to "Udgivelsen i Rex", "http://rex.kb.dk/KGL:KGL:KGL01" + @document['id'].to_s.match(/\/(\d+)\//)[1]  %>
+	      <%= link_to I18n.t('blacklight.search.index.rex'), "http://rex.kb.dk/KGL:KGL:KGL01" + @document['id'].to_s.match(/\/(\d+)\//)[1] , :target => '_blank' %>
 	    </dt>
           </dl>
         </article>
@@ -39,7 +39,6 @@
             <article class="ocr">
               <%= Snippet::SnippetServer.letter_volume(opts) %>
             </article>
-         
         </div>
       </div>
     </div>
