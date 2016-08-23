@@ -116,8 +116,8 @@ da:
       feedback: "Fejlrapportering"
 
     citation:
+      Citation: ''
       apa: ''
-      citation: 'Referens'
 
     email:
       success: "Din besked er blevet sendt."
