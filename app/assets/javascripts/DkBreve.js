@@ -116,7 +116,7 @@ window.dkBreve = (function (window, $, undefined) {
                         document.msExitFullscreen();
                     }
                 } else {
-                    element = $('.ocr').get(0);
+                    var element = $('.ocr').get(0);
                     if (element.requestFullscreen) {
                         element.requestFullscreen();
                     } else if (element.mozRequestFullScreen) {
