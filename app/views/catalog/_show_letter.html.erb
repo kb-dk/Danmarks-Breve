@@ -6,9 +6,7 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $('.collapseMetadata').click(function (e) {
-      $(this).closest('.contentContainer').toggleClass('nometa');
-    });
+    dkBreve.onDocumentReady();
   });
 </script>
 
@@ -23,7 +21,7 @@
         <article>
           <dl>
             <% if @document['volume_id_ssi'].present? %>
-                <dt><%= link_to I18n.t('blacklight.search.index.edition'), "/catalog/" + ERB::Util.url_encode(@document['volume_id_ssi'].to_s) %></dt>
+                <dt><%= link_to I18n.t('blacklight.search.index.edition'), "/catalog/" + ERB::Util.url_encode(@document['volume_id_ssi'].to_s)  %></dt>
             <% end %>
             <% document_show_fields(document).each do |field_name, field| -%>
                 <% if (should_render_show_field? document, field) && (document.has?(field_name, /\w/))   %>

@@ -34,6 +34,7 @@ da:
       saved_searches: 'Gemte søgninger'
       search_history: 'Søgehistorik'
 
+
     welcome: 'Welcome!'
     and: 'og'
     or: 'eller'
@@ -98,6 +99,7 @@ da:
         action_confirm: 'Ryd din søgehistorik'
         success: 'Søgehistorik ryddet.'
         failure: 'Din søgehistorik kunne ikke slettes.'
+      page_title: 'Søgehistorik'
       title: 'Søgehistorik'
       no_history: 'Du har ikke nogen søgehistorik'
       recent: 'Dine seneste søgninger'
