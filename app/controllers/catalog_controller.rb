@@ -5,7 +5,7 @@ class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
 
   include Blacklight::Catalog
-
+  
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
