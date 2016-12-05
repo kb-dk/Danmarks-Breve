@@ -1,11 +1,4 @@
-//$letter-landingpage-header-height: 42px;
 
-*{
-  box-sizing:border-box;
-}
-#header-navbar.navbar{
-  margin-bottom:0;
-}
 .letter-metadata, .ocrContainer, .facsimile{
   float:left;
   display:inline-block;
@@ -18,16 +11,6 @@
   article{
     padding:10px;
   }
-}
-
-#header-navbar{
-  margin-bottom:0;
-}
-h1[itemprop=name]{
-  font-size:25px;
-}
-#content #previousNextDocument{
-  padding:0px; // It has got all the spacing it needs from the margin-bottom of the top logo!
 }
 
 .letter-metadata {
@@ -151,55 +134,3 @@ h1[itemprop=name]{
   }
 }
 
-body{
-  min-width:620px;
-}
-
-.contentContainer{
-  position:relative;
-  margin-left: -15px; // compensates from a lacking row class
-  overflow-y:hidden;
-  max-height:200px; // This will get overwritten on load and window.resize
-  &.nometa{
-    .letter-metadata{
-      width: 4%; //32px;
-      overflow-x: hidden;
-      header .glyphicon-chevron-left{
-        transform:rotate(-180deg);
-      }
-      article{
-        opacity:0;
-      }
-    }
-    .textAndFacsimileContainer{
-      width:96%;
-    }
-  }
-}
-
-footer.pageFooter.dkbreveFooter{
-  margin:0;
-  padding:20px 0 10px 0;
-  a{
-    color:#666;
-    text-decoration:none;
-    &:hover{
-      text-decoration:underline;
-      color:#000;
-    }
-  }
-  address{
-    color:#666;
-    margin-bottom:0;
-  }
-  ul{
-    margin-bottom: 0;
-  }
-  img{
-    width:32px;
-  }
-  hr{
-    margin-top:7px;
-    margin-bottom:7px;
-  }
-}
