@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '< 5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -66,5 +66,5 @@ gem 'high_voltage', '~> 3.0.0'
 gem 'kbcookie', '>=0.0.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/kbcookie.git'
 gem 'snippet_server', '>=0.1.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/snippet-gem.git'
 
-gem 'blacklight_range_limit'
+gem 'blacklight_range_limit', '>= 6'
 gem 'exception_handler', '~> 0.5.0'
