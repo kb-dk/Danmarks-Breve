@@ -266,16 +266,17 @@ class CatalogController < ApplicationController
     # cache files in the public folder based on their id
     # perhaps using the Solr document modified field
     def send_pdf(document, type)
-      name = document['work_title_tesim'].first.strip rescue document.id
+      pdf_name = 'Danmarks_Breve'
       path = Rails.root.join('public', 'pdfs', "#{document.id.gsub('/', '_')}_#{type}.pdf")
       solr_timestamp = Time.parse(document.to_hash['timestamp'])
       file_mtime = File.mtime(path) if File.exist? path.to_s
       # display the cached pdf if solr doc timestamp is older than the file's modified date
       if File.exist? path.to_s and ((type == 'text' and solr_timestamp < file_mtime) or type == 'image')
-        send_file path.to_s, type: 'application/pdf', disposition: :inline, filename: name+".pdf"
+        send_file path.to_s, type: 'application/pdf', disposition: :inline, filename: pdf_name+".pdf"
       else
-        render pdf: name, footer: { right: '[page] af [topage] sider' },
-        save_to_file: path
+        render pdf: pdf_name,
+               footer: { right: '[page] af [topage] sider' },
+               save_to_file: path
       end
     end
 
