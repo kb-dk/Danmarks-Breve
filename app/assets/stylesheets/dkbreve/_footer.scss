@@ -1,0 +1,16 @@
+footer.pageFooter{
+  @include gradient-vertical($gray-lighter, #FFF);
+  font-family: $font-family-nav;
+  padding: $grid-gutter-width 0;
+  h2{
+    @extend .h3;
+  }
+  h4{
+    @extend .h5;
+
+  }
+  img{
+    width: 42px;
+  }
+}
+
