@@ -5,6 +5,9 @@
   box-shadow: 0 10px 6px -6px #ccc;
 }
 
-.navbar .navbar-nav {
-  text-transform: uppercase;
+.navbar{
+  font-family: $font-family-nav;
+  .navbar-nav{
+    @extend .text-uppercase;
+  }
 }
