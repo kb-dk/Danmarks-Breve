@@ -68,3 +68,7 @@ gem 'snippet_server', '>=0.1.0', :git => 'https://github.com/Det-Kongelige-Bibli
 
 gem 'blacklight_range_limit', '>= 6'
 gem 'exception_handler', '~> 0.5.0'
+
+group :development do
+  gem 'xray-rails'
+end
