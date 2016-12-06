@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
 
-  get '/catalog/:id/facsimile' => 'catalog#facsimile', as: 'facsimile_catalog'
+  get '/catalog/:id/faksimile' => 'catalog#facsimile', as: 'facsimile_catalog'
 
   root to: "catalog#index"
     concern :searchable, Blacklight::Routes::Searchable.new
