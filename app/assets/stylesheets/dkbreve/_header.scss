@@ -1,0 +1,18 @@
+#header-navbar{
+  //box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 10px 6px -6px #ccc;
+  -moz-box-shadow: 0 10px 6px -6px #ccc;
+  box-shadow: 0 10px 6px -6px #ccc;
+}
+
+.navbar{
+  font-family: $font-family-nav;
+  .navbar-nav{
+    @extend .text-uppercase;
+  }
+}
+.navbar-brand {
+  text-indent: 0 !important;
+  background: transparent !important;
+  padding: 15px !important;
+  }
