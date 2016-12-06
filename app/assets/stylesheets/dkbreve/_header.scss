@@ -11,3 +11,8 @@
     @extend .text-uppercase;
   }
 }
+.navbar-brand {
+  text-indent: 0 !important;
+  background: transparent !important;
+  padding: 15px !important;
+  }
