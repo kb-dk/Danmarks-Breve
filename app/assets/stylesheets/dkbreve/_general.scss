@@ -45,5 +45,8 @@ a {
 }
 
 .search{
-  padding: 30px 0;
+  padding: $grid-gutter-width 0;
+  select{
+    margin-right:$grid-gutter-width;
+  }
 }
