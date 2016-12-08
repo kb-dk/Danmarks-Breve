@@ -1,7 +1,32 @@
-footer.pageFooter{
+footer.pageFooter.dkbreveFooter{
   @include gradient-vertical($gray-lighter, #FFF);
   font-family: $font-family-nav;
-  padding: $grid-gutter-width 0;
+  padding: 20px 0 10px 0;
+
+
+  margin:0;
+  a{
+    color:#666;
+    text-decoration:none;
+    &:hover{
+      text-decoration:underline;
+      color:#000;
+    }
+  }
+  address{
+    color:#666;
+    margin-bottom:0;
+  }
+  ul{
+    margin-bottom: 0;
+  }
+  img{
+    width:32px;
+  }
+  hr{
+    margin-top:7px;
+    margin-bottom:7px;
+  }
   h2{
     @extend .h3;
   }
@@ -9,8 +34,4 @@ footer.pageFooter{
     @extend .h5;
 
   }
-  img{
-    width: 42px;
-  }
 }
-
