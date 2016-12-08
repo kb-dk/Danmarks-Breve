@@ -4,16 +4,10 @@
 <% opts = Snippet::SnippetServer.split_letter_id(solr_id) %>
 <% opts[:c] = Snippet::SnippetServer.get_collection(solr_id) %>
 
+
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.collapseMetadata').click(function (e) {
-
-          //  $('#letter_metadata_container').toggleClass('col-md-1 col-md-4');
-            $('#letter_metadata_container').toggleClass('col-md-1 col-md-4');
-            $('#letter_metadata_container').toggleClass('nometa');
-            $('#ocr_container').toggleClass('col-md-5 col-md-4');
-            $('#osd_container').toggleClass('col-md-6 col-md-4');
-        });
+        dkBreve.onDocumentReady();
     });
 </script>
 
@@ -37,6 +31,7 @@
         </dl>
         <div><%= link_to 'Dansk Biografisk Leksikon', "http://denstoredanske.dk/Dansk_Biografisk_Leksikon", :target => "_blank" %></div>
         <div><%= link_to 'Den Danske Ordbog', "http://ordnet.dk/ddo", :target => "_blank" %></div>
+        <br>
       </article>
     </div>
     <div class="col-md-4" id="ocr_container">

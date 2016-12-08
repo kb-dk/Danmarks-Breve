@@ -92,7 +92,12 @@ window.dkBreve = (function (window, $, undefined) {
 
             // Collapse/Expand metadata column
             $('.collapseMetadata').click(function (e) {
-                $(this).closest('.contentContainer').toggleClass('nometa');
+
+                //  $('#letter_metadata_container').toggleClass('col-md-1 col-md-4');
+                $('#letter_metadata_container').toggleClass('col-md-1 col-md-4');
+                $('#letter_metadata_container').toggleClass('nometa');
+                $('#ocr_container').toggleClass('col-md-5 col-md-4');
+                $('#osd_container').toggleClass('col-md-6 col-md-4');
             });
 
             // set up handler for ocr fullscreen
