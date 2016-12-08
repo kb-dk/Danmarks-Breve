@@ -31,11 +31,13 @@
 }
 
 #kbOSDInstance {
-  height: 450px;
+  height: 620px; //TODO change the fixed size
 }
 
 .ocr{
-
+  height:auto;
+  max-height:620px;//TODO change the fixed size
+  overflow:auto;
   .escFullScreenButton{
     display:none;
     position:fixed;
