@@ -5,8 +5,15 @@
 <% opts[:c] = Snippet::SnippetServer.get_collection(solr_id) %>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        dkBreve.onDocumentReady();
+    $(document).ready(function() {
+        $('.collapseMetadata').click(function (e) {
+
+          //  $('#letter_metadata_container').toggleClass('col-md-1 col-md-4');
+            $('#letter_metadata_container').toggleClass('col-md-1 col-md-4');
+            $('#letter_metadata_container').toggleClass('nometa');
+            $('#ocr_container').toggleClass('col-md-6 col-md-4');
+            $('#osd_container').toggleClass('col-md-5 col-md-4');
+        });
     });
 </script>
 
@@ -58,7 +65,7 @@
       </header>
       <article>
         <%# OpenSeadragon start %>
-        <div id="kbOSDInstance" style="height:100%">
+        <div id="kbOSDInstance">
           <div class="kbOSDViewer">
             <div class="kbOSDContent"></div>
             <div class="kbOSDFooter"></div>
