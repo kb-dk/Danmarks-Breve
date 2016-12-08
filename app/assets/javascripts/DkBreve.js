@@ -92,17 +92,13 @@ window.dkBreve = (function (window, $, undefined) {
 
             // Collapse/Expand metadata column
             $('.collapseMetadata').click(function (e) {
-
-                //  $('#letter_metadata_container').toggleClass('col-md-1 col-md-4');
-                $('#letter_metadata_container').toggleClass('col-md-1 col-md-3');
+                $('#letter_metadata_container').toggleClass('col-md-1 col-md-2');
                 $('#letter_metadata_container').toggleClass('nometa');
                 $('#letter_ocr_container').toggleClass('col-md-6 col-md-5');
-                $('#letter_osd_container').toggleClass('col-md-5 col-md-4');
 
-                $('#text_metadata_container').toggleClass('col-md-1 col-md-3');
+                $('#text_metadata_container').toggleClass('col-md-1 col-md-2');
                 $('#text_metadata_container').toggleClass('nometa');
                 $('#text_ocr_container').toggleClass('col-md-6 col-md-5');
-                $('#text_osd_container').toggleClass('col-md-5 col-md-4');
             });
 
             // set up handler for ocr fullscreen

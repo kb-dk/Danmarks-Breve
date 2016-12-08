@@ -13,7 +13,7 @@
 
 <div class="letter_container">
   <div class="row" id="letter_content">
-    <div class="col-md-3" id="letter_metadata_container">
+    <div class="col-md-2" id="letter_metadata_container">
       <header>
         <a class="pull-left collapseMetadata"><span class="glyphicon glyphicon-chevron-left"></span></a>
       </header>
@@ -50,7 +50,7 @@
         <%= Snippet::SnippetServer.render_snippet(opts) %>
       </article>
     </div>
-    <div class="col-md-4" id="letter_facsimile_container">
+    <div class="col-md-5" id="letter_facsimile_container">
       <header>
         <div class="downloadLinkContainer">
           <%= link_to(facsimile_catalog_path(document.id, format: :pdf,), :target => "_blank", class: 'btn btn-default dlButton', :target => "_blank") do %>

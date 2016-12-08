@@ -11,7 +11,11 @@ body{
 
 }
 
-.downloadLinkContainer .dlButton{
+.downloadLinkContainer .dlButton {
+  border: none;
+}
+
+#ocrFullscreenButton {
   border: none;
 }
 
