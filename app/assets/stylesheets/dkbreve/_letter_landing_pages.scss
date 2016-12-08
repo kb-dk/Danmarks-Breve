@@ -1,14 +1,10 @@
 #letter_container {
   width: 100%;
+  header{
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    padding:10px;
+    min-height: 60px;
+  }
 }
 
-#letter_header{
-  border-top:1px solid #ccc;
-  border-bottom:1px solid #ccc;
-  padding:10px;
-}
-
-#letter_content{
-  min-height: 300px;
-  padding:10px;
-}
