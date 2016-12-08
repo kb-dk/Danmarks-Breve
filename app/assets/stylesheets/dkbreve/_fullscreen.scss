@@ -1,0 +1,10 @@
+// Adding padding to be used by different browsers on fullscreen
+.ocr:-webkit-full-screen{
+  padding:5% 7%;
+}
+.ocr:-moz-full-screen{
+  padding:5% 7%;
+}
+.ocr:-ms-fullscreen{
+  padding:5% 7% !important;
+}
