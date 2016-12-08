@@ -9,5 +9,21 @@
   article{
     padding-top: 10px;
   }
+
+  &.nometa {
+    .letter-metadata {
+      width: 4%; //32px;
+      overflow-x: hidden;
+      header .glyphicon-chevron-left {
+        transform: rotate(-180deg);
+      }
+      article {
+        opacity: 0;
+      }
+    }
+    .textAndFacsimileContainer {
+      width: 96%;
+    }
+  }
 }
 
