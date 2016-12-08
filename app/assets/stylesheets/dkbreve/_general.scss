@@ -1,6 +1,38 @@
 a {
   text-decoration: none !important;
 }
+#main-container{
+    min-height: 500px;
+}
+#search-navbar{
+  background-color: transparent;
+  border-color: transparent;
+  .input-group-btn.hidden-xs{
+    @extend .form-group;
+  }
+  #search_field{
+    @extend .form-control;
+    padding: 10px 16px;
+    height: 46px;
+    line-height: 46px;
+    margin-right: 10px;
+    width: auto !important;
+    border-radius: 6px !important;
+    //border-color: $dropdown-fallback-border;
+  }
+  #q.search_q{
+    border-radius: 6px 0 0 6px !important;
+  }
+}
+
+#search{
+  .advanced_search{
+    padding: 5px 0px;
+  }
+  .submit-search-text{
+    display: none;
+  }
+}
 // Contains tools for work
 .workNavBar {
   form {
@@ -49,4 +81,8 @@ a {
   select{
     margin-right:$grid-gutter-width;
   }
+}
+
+.glyphicon{
+  color : $brand-secondary;
 }

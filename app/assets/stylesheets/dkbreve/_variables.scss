@@ -9,3 +9,21 @@ $font-family-sans-serif:  'Roboto', Helvetica, Arial, sans-serif;
 $font-family-serif:       'Roboto Slab', Times New Roman, Times, serif;
 $font-family-base:        $font-family-sans-serif;
 $font-family-nav:         'Roboto Condensed', Helvetica, Arial, sans-serif;
+
+$brand-primary:           #727272;
+$brand-secondary:         #daba85;
+$blured-bg:               rgba(218,186,133,0.05);
+$blue:                    #0e90d2;
+//$brand-primary:           #82A3D9;
+$navbar-default-bg:      $blured-bg;
+$progress-bg:            $blured-bg;
+$well-bg:                $blured-bg;
+$navbar-default-bg:      $blured-bg;
+$list-group-hover-bg:    $blured-bg;
+$panel-default-heading-bg: $blured-bg;
+$input-group-addon-bg:$blured-bg;
+
+$input-border-focus:$brand-secondary;
+
+
+//$navbar-default-brand-color: #727272;

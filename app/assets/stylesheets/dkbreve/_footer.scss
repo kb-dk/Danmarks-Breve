@@ -1,5 +1,6 @@
 footer.pageFooter.dkbreveFooter{
-  @include gradient-vertical($gray-lighter, #FFF);
+  @include gradient-vertical(#fff, #FFF);
+  box-shadow: 0 -10px 6px -6px #ccc;
   font-family: $font-family-nav;
   padding: 20px 0 10px 0;
 
