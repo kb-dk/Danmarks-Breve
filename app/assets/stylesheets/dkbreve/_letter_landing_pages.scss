@@ -12,7 +12,7 @@
     padding: 5px;
   }
   .row div {
-
+    padding:0px;
     -webkit-transition: width 0.3s ease, margin 0.3s ease;
     -moz-transition: width 0.3s ease, margin 0.3s ease;
     -o-transition: width 0.3s ease, margin 0.3s ease;
@@ -30,13 +30,19 @@
   }
 }
 
+.letter_text_ocr_container {
+  border-left:1px solid #ccc;
+  border-right:1px solid #ccc;
+  height: $letter-page-min-height;
+}
+
 #kbOSDInstance {
-  height: 620px; //TODO change the fixed size
+  height: $letter-page-min-height;
 }
 
 .ocr{
   height:auto;
-  max-height:620px;//TODO change the fixed size
+  max-height:$letter-page-min-height;
   overflow:auto;
   .escFullScreenButton{
     display:none;

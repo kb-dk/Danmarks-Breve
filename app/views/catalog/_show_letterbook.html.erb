@@ -13,7 +13,7 @@
 
 <div class="container ">
   <div class="row">
-      <div class=" col-sm-12 letterbook-metadata">
+      <div class=" col-sm-3 letterbook-metadata">
         <article>
           <dl>
             <% document_show_fields(document).each do |field_name, field| -%>
@@ -25,9 +25,9 @@
           </dl>
         </article>
       </div>
-  </div>
-  <div class="row">
-  <div class=" col-md-12 container textAndFacsimileContainer">
+
+
+  <div class=" col-md-9 letter_text_ocr_container">
 
             <article class="ocr">
               <%= Snippet::SnippetServer.letter_volume(opts) %>
