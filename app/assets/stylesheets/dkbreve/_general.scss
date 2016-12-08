@@ -1,6 +1,16 @@
-a {
-  text-decoration: none !important;
+
+body{
+
+  a {
+    text-decoration: none !important;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
 }
+
 
 // Contains tools for work
 .workNavBar{
@@ -55,7 +65,7 @@ a {
 }
 
 .nav-tab-instance{
-  background: $gray-lighter;
+ // background: $gray-lighter;
   ul{
     border: none;
     padding:0px $grid-gutter-width;
