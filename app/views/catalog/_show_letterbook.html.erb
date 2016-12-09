@@ -11,10 +11,10 @@
 </script>
 
 
-<div class="container ">
+<div class="container letter_container">
   <div class="row">
-      <div class=" col-sm-2 letterbook-metadata">
-        <article>
+      <div class=" col-sm-12">
+        <header>
           <dl>
             <% document_show_fields(document).each do |field_name, field| -%>
                 <% if should_render_show_field? document, field %>
@@ -23,17 +23,14 @@
                 <% end -%>
             <% end -%>
           </dl>
-        </article>
-      </div>
+        </header>
 
-
-  <div class=" col-md-10 letter_text_ocr_container">
 
             <article class="ocr">
               <%= Snippet::SnippetServer.letter_volume(opts) %>
             </article>
         </div>
-      </div>
+
 
   </div>
 </div>
