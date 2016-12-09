@@ -85,10 +85,10 @@ window.dkBreve = (function (window, $, undefined) {
             }
         },
         onDocumentReady: function () {
-            var headerFooterHeight = dkBreve.getFooterAndHeaderHeight(),
+            /*var headerFooterHeight = dkBreve.getFooterAndHeaderHeight(),
                 windowHeight = $(window).innerHeight(),
                 contentHeight = windowHeight - headerFooterHeight;
-            dkBreve.setContentHeight(contentHeight);
+            dkBreve.setContentHeight(contentHeight);*/
 
             // Collapse/Expand metadata column
             $('.collapseMetadata').click(function (e) {
@@ -137,7 +137,7 @@ window.dkBreve = (function (window, $, undefined) {
 
             $('.escFullScreenButton').click(dkBreve.closeFullScreen);
 
-            $(window).resize(function () { dkBreve.onWindowResize.call(dkBreve); });
+        //    $(window).resize(function () { dkBreve.onWindowResize.call(dkBreve); });
         },
         onKbOSDReady : function (kbosd) {
             var that = this;
@@ -154,9 +154,9 @@ window.dkBreve = (function (window, $, undefined) {
                 $('.ocr').scroll(this.onOcrScroll);
             }
         },
-        onWindowResize : function () {
+        /*onWindowResize : function () {
             this.setContentHeight($(window).innerHeight() - this.getFooterAndHeaderHeight());
-        },
+        },*/
         closeFullScreen : function () {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -168,7 +168,7 @@ window.dkBreve = (function (window, $, undefined) {
                 document.msExitFullscreen();
             }
         },
-        getFooterAndHeaderHeight : function () {
+    /*    getFooterAndHeaderHeight : function () {
             return $('.page_links').outerHeight() +
                 $('.workNavBar').outerHeight() +
                 $('h1[itemprop=name]').outerHeight() +
@@ -181,7 +181,7 @@ window.dkBreve = (function (window, $, undefined) {
                 $('.contentContainer').css('maxHeight', height);
                 $('.textAndFacsimileContainer').css('minHeight', height);
             }
-        }
+        }*/
     };
 
     return new DkBreve();
