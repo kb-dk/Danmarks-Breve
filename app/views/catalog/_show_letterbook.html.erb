@@ -11,13 +11,9 @@
 </script>
 
 
-<div class="container">
+<div class="container ">
   <div class="row">
-    <div class="col-md-12 contentContainer">
-      <div class="letter-metadata">
-        <header>
-          <a class="pull-left collapseMetadata"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        </header>
+      <div class=" col-sm-2 letterbook-metadata">
         <article>
           <dl>
             <% document_show_fields(document).each do |field_name, field| -%>
@@ -26,20 +22,19 @@
                     <dd class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value field_name %></dd>
                 <% end -%>
             <% end -%>
-	    <dt>
-	      <%= link_to I18n.t('blacklight.search.index.rex'), "http://rex.kb.dk/KGL:KGL:KGL01" + @document['id'].to_s.match(/\/(\d+)\//)[1] , :target => '_blank' %>
-	    </dt>
           </dl>
         </article>
       </div>
-      <div class="container textAndFacsimileContainer">
-        <div class="row">
+
+
+  <div class=" col-md-10 letter_text_ocr_container">
+
             <article class="ocr">
               <%= Snippet::SnippetServer.letter_volume(opts) %>
             </article>
         </div>
       </div>
-    </div>
+
   </div>
 </div>
 
