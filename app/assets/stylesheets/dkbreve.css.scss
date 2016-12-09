@@ -1,11 +1,13 @@
-//Bootstrap
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
-@import 'blacklight/blacklight';
+
 
 //Variables
 @import 'dkbreve/variables';
 @import 'bootstrap/variables';
+
+//Bootstrap
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'blacklight/blacklight';
 
 //dk breve
 @import 'dkbreve/dkbreve';
