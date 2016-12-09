@@ -17,6 +17,7 @@ footer.pageFooter.dkbreveFooter{
   address{
     color:#666;
     margin-bottom:0;
+    text-align: right;
   }
   ul{
     margin-bottom: 0;
@@ -24,15 +25,8 @@ footer.pageFooter.dkbreveFooter{
   img{
     width:32px;
   }
-  hr{
-    margin-top:7px;
-    margin-bottom:7px;
+  .media-body{
+    padding-top:3px;
   }
-  h2{
-    @extend .h3;
-  }
-  h4{
-    @extend .h5;
 
-  }
 }

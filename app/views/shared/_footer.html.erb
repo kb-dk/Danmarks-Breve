@@ -11,21 +11,26 @@
               <%= image_tag("kb.png", :alt => "Det Kongelige Bibliotek") %>
             </div>
             <div class="media-body">
-              <h4 class="media-heading">Det Kongelige Bibliotek</h4>
+              <h5 class="media-heading">Det Kongelige Bibliotek</h5>
             </div>
           </a>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-3">
         <ul class="list-unstyled">
           <li><%= link_to 'Om Danmarks Breve', page_path('about') , class:'' %></li>
-          <li><%= link_to 'Cookie- og Privatlivspolitik', page_path('politik'), class:'' %></li>
         </ul>
       </div>
+
+      <div class="col-sm-3">
+      <ul class="list-unstyled">
+        <li><%= link_to 'Cookie- og Privatlivspolitik', page_path('politik'), class:'' %></li>
+      </ul>
+    </div>
       <div class="col-sm-3">
         <hr class="visible-xs-block"/>
         <address>
-          Kontakt<br>
+          Kontakt:
           <a href="mailto:info@adl.dk"><span class="glyphicon glyphicon-envelope"></span> info@kb.dk</a>
         </address>
 
