@@ -3,30 +3,16 @@ footer.pageFooter.dkbreveFooter{
   box-shadow: 0 -10px 6px -6px #ccc;
   font-family: $font-family-nav;
   padding: 20px 0 10px 0;
-
-
+  span{
+    display: inline-block;
+    padding: 0 2px;
+  }
   margin:0;
-  a{
-    color:#666;
-    text-decoration:none;
-    &:hover{
-      text-decoration:underline;
-      color:#000;
-    }
-  }
-  address{
-    color:#666;
-    margin-bottom:0;
-    text-align: right;
-  }
-  ul{
-    margin-bottom: 0;
-  }
   img{
-    width:32px;
+    width:17px;
+    vertical-align: top;
   }
   .media-body{
     padding-top:3px;
   }
-
 }

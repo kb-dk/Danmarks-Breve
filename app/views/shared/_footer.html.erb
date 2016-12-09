@@ -1,43 +1,40 @@
-
 <footer class="pageFooter dkbreveFooter">
 
   <div class="container">
 
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="media">
+    <div class="row text-center hidden-xs">
+      <span>
           <a href="http://www.kb.dk" target="_blank">
-            <div class="media-left">
-              <%= image_tag("kb.png", :alt => "Det Kongelige Bibliotek") %>
-            </div>
-            <div class="media-body">
-              <h5 class="media-heading">Det Kongelige Bibliotek</h5>
-            </div>
+            <span><%= image_tag("kb.png", :alt => "Det Kongelige Bibliotek") %></span>
+            <span>
+              <h5>Det Kongelige Bibliotek</h5>
+            </span>
           </a>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <ul class="list-unstyled">
-          <li><%= link_to 'Om Danmarks Breve', page_path('about') , class:'' %></li>
-        </ul>
-      </div>
-
-      <div class="col-sm-3">
-      <ul class="list-unstyled">
-        <li><%= link_to 'Cookie- og Privatlivspolitik', page_path('politik'), class:'' %></li>
-      </ul>
-    </div>
-      <div class="col-sm-3">
-        <hr class="visible-xs-block"/>
-        <address>
-          Kontakt:
+      </span>
+      <span>|</span>
+      <span>
+          <%= link_to 'Om Danmarks Breve', page_path('about'), class: '' %>
+      </span>
+      <span>|</span>
+      <span>
+         <%= link_to 'Cookie- og Privatlivspolitik', page_path('politik'), class: '' %>
+      </span>
+      <span>|</span>
+      <span>
           <a href="mailto:info@adl.dk"><span class="glyphicon glyphicon-envelope"></span> info@kb.dk</a>
-        </address>
-
+      </span>
+    </div>
+    <div class="visible-xs-block">
+      <div class="col-sm-12">
+        <a href="http://www.kb.dk" target="_blank">
+          Det Kongelige Bibliotek
+        </a>
       </div>
-
+      <div class="col-sm-12"><%= link_to 'Om Danmarks Breve', page_path('about'), class: '' %></div>
+      <div class="col-sm-12"><%= link_to 'Cookie- og Privatlivspolitik', page_path('politik'), class: '' %></div>
+      <div class="col-sm-12">
+        <a href="mailto:info@adl.dk"><span class="glyphicon glyphicon-envelope"></span> info@kb.dk</a></div>
     </div>
   </div>
-
 </footer>
 
