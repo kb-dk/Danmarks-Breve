@@ -161,9 +161,10 @@ body{
 .glyphicon{
   color : $brand-secondary;
 }
-
-.document.blacklight-letter{
-  @extend .well;
+#documents {
+  .document.blacklight-letter {
+    @extend .well;
+  }
 }
 
 .image {
