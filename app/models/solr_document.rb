@@ -17,9 +17,11 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Corele
   use_extension(Blacklight::Document::DublinCore)
 
-  def export_as_apa_citation_txt(url)
+  # This function is used both for the citation where we need the url, and for the pdf footer
+  # where we don't need it. So the default value is set to nil and we make a check inside for nil.
+  def export_as_apa_citation_txt(url = nil)
     doc = self
-    url = url[0, url.index('/citation')] # Cut the citation part of the URL
+    url = url[0, url.index('/citation')] unless url.nil? # Cut the citation part of the URL
     retrieved_date = Time.now # The current date of the citation
     # The following fields can have 3 different "values": They can be nil or [""] or [" "].
     # If either of these is true, then we give the ukendt value, or else we make a sentence of the array values.
@@ -35,24 +37,8 @@ class SolrDocument
     # Construct the whole citation
     cite = ""
     cite += "<i>" + title + "</i>, " + I18n.t('blacklight.application_name') + ". "
-    cite += "Set d. " + retrieved_date.strftime("%d/%m-%Y") + ", "
-    cite += "URL: " + url
-
-    # I know I should delete the following since we are not using them, but I just can't!
-    #
-    # # Find the volume which belongs in
-    # volume = Finder.get_doc_by_id(doc['volume_id_ssi']).first
-    # auth = volume['author_name_tesim'].to_sentence(:two_words_connector => ' og ', :last_word_connector => ' og ')
-    #
-    # # Build the whole reference sentence, with the letter title and volume metadata
-    # cite = ""
-    # cite +=  auth.to_s  + ", " unless auth.to_s.blank?
-    # cite +=  volume['published_date_ssi'] + ". " unless volume['published_date_ssi'].blank?
-    # cite +=  title
-    # cite +=  " i: <i>"+volume['volume_title_tesim'].first + "</i>, " unless volume['volume_title_tesim'].blank?
-    # cite +=  "side "+doc['page_ssi'] + ". " unless doc['page_ssi'].blank?
-    # cite +=  volume['publisher_name_ssi'] + ", " unless volume['publisher_name_ssi'].blank?
-    # cite +=  volume['published_place_ssi'] + ". " unless volume['published_place_ssi'].blank?
+    cite += "Set d. " + retrieved_date.strftime("%d/%m-%Y")
+    url.nil? ? cite += "." : cite += ", " + "URL: " + url
 
     cite.html_safe
 

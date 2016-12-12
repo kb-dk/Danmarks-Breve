@@ -275,7 +275,11 @@ class CatalogController < ApplicationController
         send_file path.to_s, type: 'application/pdf', disposition: :inline, filename: pdf_name+".pdf"
       else
         render pdf: pdf_name,
-               footer: { right: '[page] af [topage] sider' },
+               header:  {right: '[page]'},
+               footer: {html: {template: 'shared/pdf_footer.pdf.erb'},
+                         spacing: 5},
+               margin: {top: 15, # default 10 (mm)
+                        bottom: 15},
                save_to_file: path
       end
     end
