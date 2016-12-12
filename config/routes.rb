@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => '/'
-  mount BlacklightAdvancedSearch::Engine => '/'
+  # mount BlacklightAdvancedSearch::Engine => '/'
 
   get '/catalog/:id/faksimile' => 'catalog#facsimile', as: 'facsimile_catalog'
 
@@ -31,9 +31,9 @@ Rails.application.routes.draw do
   end
 
  # Rails.application.routes.draw do
-  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
-  get 'advanced' => 'advanced#index', as: 'advanced_search'
-  match 'advanced/range_limit', :to => 'advanced#range_limit', :as => 'catalog_range_limit', :via => [:get, :post]
+ #  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+ #  get 'advanced' => 'advanced#index', as: 'advanced_search'
+ #  match 'advanced/range_limit', :to => 'advanced#range_limit', :as => 'catalog_range_limit', :via => [:get, :post]
  #   get "/pages/:page" => "pages#show"
  # end
 
