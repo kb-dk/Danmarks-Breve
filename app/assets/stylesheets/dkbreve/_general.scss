@@ -165,3 +165,21 @@ body{
 .document.blacklight-letter{
   @extend .well;
 }
+
+.image {
+  background-position: top;
+  height: 250px;
+  width: 100%;
+  padding: 20px 15px;
+  border-radius: 10px 10px 0 0;
+}
+
+.image1{
+  background: url(asset-path('about.jpg')) no-repeat;
+  background-size: cover;
+}
+
+.image2{
+  background: url(asset-path('help.jpg')) no-repeat;
+  background-size: cover;
+}
