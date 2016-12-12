@@ -33,16 +33,15 @@
 .letter_text_ocr_container {
   border-left:1px solid #ccc;
   border-right:1px solid #ccc;
-  height: $letter-page-min-height;
 }
 
 #kbOSDInstance {
-  height: $letter-page-min-height;
+  height: $letter-page-height;
 }
 
 .ocr{
   height:auto;
-  max-height:$letter-page-min-height;
+  max-height:$letter-page-height;
   overflow:auto;
   .escFullScreenButton{
     display:none;
