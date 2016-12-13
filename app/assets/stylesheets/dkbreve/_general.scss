@@ -1,11 +1,15 @@
 
 body{
+
   a {
     text-decoration: none !important;
+
   }
+
   h1 {
     font-size: 24px;
   }
+
 }
 .box-shadow{
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
@@ -177,7 +181,7 @@ body{
   height: 250px;
   width: 100%;
   padding: 20px 15px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px ;
 }
 
 .image1{
@@ -188,6 +192,11 @@ body{
 .image2{
   background: url(asset-path('help.jpg')) no-repeat;
   background-size: cover;
+}
+.frontpage{
+  h3{
+    color:$blue;
+  }
 }
 
 
