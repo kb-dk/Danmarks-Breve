@@ -3,6 +3,7 @@ body{
 
   a {
     text-decoration: none !important;
+
   }
 
   h1 {
@@ -10,7 +11,14 @@ body{
   }
 
 }
-
+.box-shadow{
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
+}
+.document, .facet-label{
+  a {
+    color: $blue;
+  }
+}
 .downloadLinkContainer .dlButton {
   border: none;
 }
@@ -21,7 +29,7 @@ body{
 
 
 #main-container{
-    min-height: 500px;
+    min-height: 650px;
 }
 #search-navbar{
   background-color: transparent;
@@ -81,7 +89,7 @@ body{
         @extend .glyphicon-pencil;
         @extend .glyphicon;
         position: relative;
-        padding-right:4px;
+        padding:4px;
       }
     }
     #feedbackLink{
@@ -160,4 +168,28 @@ body{
 
 .glyphicon{
   color : $brand-secondary;
+}
+#documents {
+  .document.blacklight-letter {
+    @extend .well;
+    @extend .box-shadow;
+  }
+}
+
+.image {
+  background-position: top;
+  height: 250px;
+  width: 100%;
+  padding: 20px 15px;
+  border-radius: 10px 10px 0 0;
+}
+
+.image1{
+  background: url(asset-path('about.jpg')) no-repeat;
+  background-size: cover;
+}
+
+.image2{
+  background: url(asset-path('help.jpg')) no-repeat;
+  background-size: cover;
 }
