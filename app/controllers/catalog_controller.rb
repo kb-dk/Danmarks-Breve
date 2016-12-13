@@ -6,7 +6,7 @@ class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
 
   include Blacklight::Catalog
-  
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
@@ -94,7 +94,7 @@ class CatalogController < ApplicationController
                                segments: true,
                                maxlength: 4
                            }
-   
+
 
     # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['cat_ssi', 'language_facet']
     # config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
@@ -121,7 +121,7 @@ class CatalogController < ApplicationController
 
     # Letter specific metadata
     config.add_index_field 'volume_title_tesim', :label => I18n.t('blacklight.search.part_of'), helper_method: :show_volume_link
-    config.add_index_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
+    config.add_index_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location')
     config.add_index_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
 
     # solr fields to be displayed in the show (single result) view
@@ -130,7 +130,7 @@ class CatalogController < ApplicationController
     # Letter specific metadata
     config.add_show_field 'sender_tesim', :label => I18n.t('blacklight.search.sender'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
-    config.add_show_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
+    config.add_show_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location')
     config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
     config.add_show_field 'author_name_tesim', :label => 'Forfatter', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'editor_name_tesim', :label => 'Redaktør', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
@@ -167,7 +167,7 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-    config.add_search_field( I18n.t('blacklight.search.sender')) do |field|
+    config.add_search_field(I18n.t('blacklight.search.sender')) do |field|
       field.advanced_parse = false
 
       # :solr_local_parameters will be sent using Solr LocalParams
@@ -180,7 +180,7 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field( I18n.t('blacklight.search.recipient')) do |field|
+    config.add_search_field(I18n.t('blacklight.search.recipient')) do |field|
       field.advanced_parse = false
 
       field.solr_local_parameters = {
@@ -189,7 +189,7 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field( I18n.t('blacklight.search.senders_location')) do |field|
+    config.add_search_field(I18n.t('blacklight.search.senders_location')) do |field|
       field.advanced_parse = false
       field.solr_local_parameters = {
           qf: '$sender_location_qf',
@@ -197,14 +197,13 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field( I18n.t('blacklight.search.recipients_location')) do |field|
+    config.add_search_field(I18n.t('blacklight.search.recipients_location')) do |field|
       field.advanced_parse = false
       field.solr_local_parameters = {
           qf: '$recipient_location_qf',
           pf: '$recipient_location_pf'
       }
     end
-
 
 
     # Specifying a :qt only to show it's possible, and so our internal automated
@@ -249,7 +248,7 @@ class CatalogController < ApplicationController
       @response, @document = fetch URI.unescape(params[:id])
       respond_to do |format|
         format.html { setup_next_and_previous_documents }
-        format.json { render json: { response: { document: @document } } }
+        format.json { render json: {response: {document: @document}} }
         format.pdf { send_pdf(@document, 'text') }
         additional_export_formats(@document, format)
       end
@@ -266,6 +265,7 @@ class CatalogController < ApplicationController
     # cache files in the public folder based on their id
     # perhaps using the Solr document modified field
     def send_pdf(document, type)
+      (type.eql? 'image') ? left_margin = 35 : left_margin = 20 # If we render an image the left margin should be longer
       pdf_name = 'Danmarks_Breve'
       path = Rails.root.join('public', 'pdfs', "#{document.id.gsub('/', '_')}_#{type}.pdf")
       solr_timestamp = Time.parse(document['timestamp'])
@@ -274,14 +274,16 @@ class CatalogController < ApplicationController
       if File.exist? path.to_s and ((type == 'text' and solr_timestamp < file_mtime) or type == 'image')
         send_file path.to_s, type: 'application/pdf', disposition: :inline, filename: pdf_name+".pdf"
       else
+        # Global configuration for all pdfs is placed in config/initializers/wicked_pdf.rb
         render pdf: pdf_name,
-               footer: { right: '[page] af [topage] sider' },
-               save_to_file: path
+               save_to_file: path,
+               margin: {top: 15, # default 10 (mm)
+                        bottom: 20,
+                        left: left_margin,
+                        right: 12}
       end
     end
 
 
   end
-
-
 end
