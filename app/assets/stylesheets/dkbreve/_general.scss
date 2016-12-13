@@ -207,3 +207,6 @@ body{
   color: $blue !important;
 }
 
+.pageBreak a::after{
+  content:'';
+}
