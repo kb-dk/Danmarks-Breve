@@ -6,7 +6,7 @@
             <%= t('blacklight.search.form.search_field.label') %>
           </label>
 
-                     <span class="sr-only">
+          <span class="sr-only">
                        <%= t('blacklight.search.form.search_field.post_label') %>
                      </span>
       <% end %>
@@ -24,38 +24,8 @@
                   <span class="submit-search-text"><%=t('blacklight.search.form.submit')%></span>
                   <span class="glyphicon glyphicon-search"></span>
                 </button>
-      </span>
-      <span class="input-group-btn">
-          <span class="search-tooltip ">
-            <span class="question-mark">?</span>
-            <span class="tooltiptext">
-                <div class="panel panel-default">
-  <div class="panel-heading">Søgetips</div>
-  <div class="panel-body">
-    <ul class="advanced-help">
-
-     <li>Kombiner søgertermer for at finde
-     </li>
-
-     <li>Brug " for at søge efter en sætning
-
-     </li><li>Brug "+" før et ord hvis resultatet skal indeholde dette ord.</li>
-
-     <li>Brug "-" for at udelukke ord fra søgningen.
-
-     </li><li>Brug "OR", "AND", and "NOT" til mere avancerede søgninger. </li>
-     <li>Bemærk at systemet understøtter ikke wildcards. Trunkering udføres automatisk af systemet</li>
-   </ul>
-  </div>
-</div>
-              </span>
-          </span>
-</span>
+                </span>
     </div>
-    <span class="advanced-search">
-      <%= link_to "Avanceret søgning", blacklight_advanced_search_engine.advanced_search_path(params.except(:controller, :action)), class: 'advanced_search'%>
-    </span>
+
 
 <% end %>
-
-
