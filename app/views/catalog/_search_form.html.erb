@@ -6,7 +6,7 @@
             <%= t('blacklight.search.form.search_field.label') %>
           </label>
 
-                     <span class="sr-only">
+          <span class="sr-only">
                        <%= t('blacklight.search.form.search_field.post_label') %>
                      </span>
       <% end %>
@@ -52,10 +52,6 @@
           </span>
 </span>
     </div>
-    <span class="advanced-search">
-      <%= link_to "Avanceret søgning", blacklight_advanced_search_engine.advanced_search_path(params.except(:controller, :action)), class: 'advanced_search'%>
-    </span>
-
 <% end %>
 
 
