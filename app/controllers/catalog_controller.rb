@@ -150,8 +150,6 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise.
 
     config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
-      ## do not parse the advanced search fields
-      field.advanced_parse = false
     end
 
 
@@ -160,7 +158,6 @@ class CatalogController < ApplicationController
     # of Solr search fields.
 
     config.add_search_field(I18n.t('blacklight.search.sender')) do |field|
-      field.advanced_parse = false
 
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
@@ -173,7 +170,6 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field(I18n.t('blacklight.search.recipient')) do |field|
-      field.advanced_parse = false
 
       field.solr_local_parameters = {
           qf: '$recipient_qf',
@@ -182,7 +178,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field(I18n.t('blacklight.search.senders_location')) do |field|
-      field.advanced_parse = false
+
       field.solr_local_parameters = {
           qf: '$sender_location_qf',
           pf: 'sender_location_pf'
@@ -190,7 +186,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field(I18n.t('blacklight.search.recipients_location')) do |field|
-      field.advanced_parse = false
+
       field.solr_local_parameters = {
           qf: '$recipient_location_qf',
           pf: '$recipient_location_pf'
