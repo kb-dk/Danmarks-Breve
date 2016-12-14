@@ -27,7 +27,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'blacklight', "~> 6.0"
-gem "blacklight_advanced_search"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 # Use ActiveModel has_secure_password
@@ -68,3 +67,7 @@ gem 'snippet_server', '>=0.1.0', :git => 'https://github.com/Det-Kongelige-Bibli
 
 gem 'blacklight_range_limit', '>= 6'
 gem 'exception_handler', '~> 0.5.0'
+
+group :development do
+  gem 'xray-rails'
+end

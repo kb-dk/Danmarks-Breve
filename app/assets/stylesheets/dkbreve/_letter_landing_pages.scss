@@ -1,73 +1,48 @@
+.letter_container {
 
-.letter-metadata, .ocrContainer, .facsimile{
-  float:left;
-  display:inline-block;
-  transition:width 200ms ease-in;
+  width: 100%;
+
   header{
     border-top:1px solid #ccc;
     border-bottom:1px solid #ccc;
-    padding:10px;
+    padding:3px;
+    min-height: 40px;
   }
   article{
-    padding:10px;
+    padding: 8px;
   }
-}
+  .row div {
+    padding:0px;
+    -webkit-transition: width 0.3s ease, margin 0.3s ease;
+    -moz-transition: width 0.3s ease, margin 0.3s ease;
+    -o-transition: width 0.3s ease, margin 0.3s ease;
+    transition: width 0.3s ease, margin 0.3s ease;
+  }
 
-.letter-metadata {
-  width: 20%;
-  overflow-x:auto; // This sucks, but it might be better than just hidden?
-  header{
-    height:33px; // FIXME: Don't really know why, but the collapse link doesn't span vertically?
-    .collapseMetadata{
-      cursor:pointer;
-      margin:-2px; // Positioning it vertically centered the ugly way? :-/
-      .glyphicon-chevron-left{
-        transition:transform 200ms ease-in;
-      }
+  .nometa {
+    header .glyphicon-chevron-left{
+      transform:rotate(-180deg);
     }
-  }
-  article{
-    //opacity:1;
-    transition:opacity 200ms ease-in;
-  }
-}
-
-.textAndFacsimileContainer{
-  width: 80%;
-  min-height:200px; // This will get overwritten on load and window.resize
-  float:left;
-  display:inline-block;
-  position:relative;
-  transition:width 200ms ease-in;
-  .downloadLinkContainer{
-    text-align:left;
-    border-top:1px solid #ccc;
-    border-bottom:1px solid #ccc;
-    .dlButton{
-      border:none;
+    article{
+      opacity:0;
+      height:0px;
     }
   }
 }
 
-.ocrContainer {
-  border-left: 1px solid #ccc;
-  width: 50%;
-  min-width: 150px;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  #ocrFullscreenButton{
-    border:0;
-    margin-top:1px; // FIXME: This is crap, I don't know why it doesn't act like the other buttons, but it don't. I have no more time for this unfortunately (AKA: Congratulations with your new job next frontender! ;-) )
-    padding-bottom:5px;
-    outline:none;
-  }
+.letter_text_ocr_container {
+  border-left:1px solid #ccc;
+  border-right:1px solid #ccc;
 }
+
+#kbOSDInstance {
+  height: $letter-page-height;
+}
+
 .ocr{
-  overflow-y: auto;
-  position:absolute;
-  bottom:0px;
-  top:$letter-landingpage-header-height;
+  height:auto;
+  max-height:$letter-page-height;
+  overflow:auto;
   .escFullScreenButton{
     display:none;
     position:fixed;
@@ -76,7 +51,7 @@
     opacity:0.8;
   }
   &:-webkit-full-screen{
-    padding:0 10%;
+    padding:5% 7%;
     max-width:57em;
     background-color:#fff;
     font-family:Serif;
@@ -85,7 +60,7 @@
     }
   }
   &:-moz-full-screen{
-    padding:0 10%;
+    padding:5% 7%;
     max-width:57em;
     background-color:#fff;
     font-family:Serif;
@@ -94,7 +69,7 @@
     }
   }
   &:-ms-fullscreen{
-    padding:0 10%;
+    padding:5% 7% !important;
     max-width:57em;
     background-color:#fff;
     font-family:Serif;
@@ -112,25 +87,3 @@
     }
   }
 }
-
-.kbFastNav input{
-  line-height:normal; // I don't know where this gets screwed, but it does, so here I am fixing it for kbOSD
-}
-
-.facsimile {
-  border-left:1px solid #ccc;
-  width:50%;
-  min-width:240px;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left:50%;
-  article{
-    position:absolute;
-    top:$letter-landingpage-header-height;
-    left:0;
-    right:0;
-    bottom:0;
-  }
-}
-
