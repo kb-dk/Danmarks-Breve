@@ -1,6 +1,6 @@
 <% @page_title = t('blacklight.saved_searches.page_title', :application_name => application_name) %>
 
-<div id="content" class="col-md-9">
+<div id="content" class="col-md-12">
 
 <h2 class='page-heading'><%= t('blacklight.saved_searches.title') %></h2>
 
@@ -14,7 +14,7 @@
   
 <%- else -%>
   <p>
-  <%= link_to t('blacklight.saved_searches.clear.action_title'), blacklight.clear_saved_searches_path, :method => :delete, :data => { :confirm => t('blacklight.saved_searches.clear.action_confirm') } %>
+  <%= link_to t('blacklight.saved_searches.clear.action_title'), blacklight.clear_saved_searches_path, :method => :delete, :data => { :confirm => t('blacklight.saved_searches.clear.action_confirm') }, :class => 'btn btn-danger pull-right' %>
   </p>
 
   <h3 class='section-heading'><%= t('blacklight.saved_searches.list_title') %></h3>
