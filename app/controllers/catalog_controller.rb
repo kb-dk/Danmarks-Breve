@@ -211,7 +211,7 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # # except in the relevancy case).
     config.add_sort_field 'year_itsi asc', label: I18n.t('blacklight.search.form.sort.year')
-    config.add_sort_field 'score desc', label: I18n.t('blacklight.search.form.sort.relevance')
+    # config.add_sort_field 'score desc', label: I18n.t('blacklight.search.form.sort.relevance')
     config.add_sort_field 'sortby_sender_ssi asc', label: I18n.t('blacklight.search.form.sort.sender')
     config.add_sort_field 'sortby_recipient_ssi asc', label: I18n.t('blacklight.search.form.sort.recipient')
 
