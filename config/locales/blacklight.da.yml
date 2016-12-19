@@ -234,6 +234,8 @@ da:
         refine: 'Afgræns til'
         facet_fulltext: 'Fuldtekst'
         facet_title: 'Titel'
+        sender_location: "Afsendelsessted"
+        recipient_location: "Modtagelsessted"
         sort:
           count: 'Antal hits'
           index: 'Alfabetisk'
