@@ -77,8 +77,10 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
-    config.add_facet_field 'sender_ssim', :label => "Afsender", :limit => 10
-    config.add_facet_field 'recipient_ssim', :label => "Modtager", :limit => 10
+    config.add_facet_field 'sender_ssim', :label => "Afsender", :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'recipient_ssim', :label => "Modtager", :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'sender_location_ssim', :label => I18n.t('blacklight.search.facets.sender_location'), :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'recipient_location_ssim', :label => I18n.t('blacklight.search.facets.recipient_location'), :limit => 20, index_range: 'A'..'Z'
     config.add_facet_field 'year_itsi', label: 'Afsendelsesdato',
                            range: {
                                num_segments: 10,
@@ -124,7 +126,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location')
     config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
-    config.add_show_field 'author_name_tesim', :label => 'Forfatter', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
+    config.add_show_field 'author_name_tesim', :label => I18n.t('blacklight.search.letter_publisher'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'editor_name_tesim', :label => 'Redaktør', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
     config.add_show_field 'publisher_name_ssi', :label => 'Udgiver'
@@ -211,9 +213,9 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # # except in the relevancy case).
     config.add_sort_field 'year_itsi asc', label: I18n.t('blacklight.search.form.sort.year')
-    # config.add_sort_field 'score desc', label: I18n.t('blacklight.search.form.sort.relevance')
     config.add_sort_field 'sortby_sender_ssi asc', label: I18n.t('blacklight.search.form.sort.sender')
     config.add_sort_field 'sortby_recipient_ssi asc', label: I18n.t('blacklight.search.form.sort.recipient')
+    config.add_sort_field 'score desc', label: I18n.t('blacklight.search.form.sort.relevance')
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

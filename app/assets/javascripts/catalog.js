@@ -29,3 +29,13 @@ function checkCookie() {
         }
     }
 }
+
+// Function to sort the facet modal on alphabetical order by default: When the open event starts for the modal,
+// the 'Alfabetisk' button is clicked
+$(document).ready(function () {
+    if($('body').is('.blacklight-catalog-index')) { // Do this only in the index page
+        $('#ajax-modal').on('show.bs.modal', function (e) {
+            $('.sort_change.az.btn.btn-default').click();
+        });
+    }
+});

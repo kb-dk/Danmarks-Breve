@@ -176,6 +176,7 @@ da:
       recipient: "Modtager"
       senders_location: "Afsendelsessted"
       recipients_location: "Modtagelsessted"
+      letter_publisher: "Brevudgiver"
       part_of: "Del af"
       bookmarks:
           present: "I bogmærker"
@@ -233,6 +234,8 @@ da:
         refine: 'Afgræns til'
         facet_fulltext: 'Fuldtekst'
         facet_title: 'Titel'
+        sender_location: "Afsendelsessted"
+        recipient_location: "Modtagelsessted"
         sort:
           count: 'Antal hits'
           index: 'Alfabetisk'
