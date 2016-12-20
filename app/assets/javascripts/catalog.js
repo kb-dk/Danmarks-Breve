@@ -34,7 +34,7 @@ function checkCookie() {
 // the 'Alfabetisk' button is clicked
 $(document).ready(function () {
     if($('body').is('.blacklight-catalog-index')) { // Do this only in the index page
-        $('#ajax-modal').on('show.bs.modal', function (e) {
+        $('#ajax-modal').on('shown.bs.modal', function (e) {
             $('.sort_change.az.btn.btn-default').click();
         });
     }
