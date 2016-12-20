@@ -77,10 +77,10 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
-    config.add_facet_field 'sender_ssim', :label => "Afsender", :limit => 20
-    config.add_facet_field 'recipient_ssim', :label => "Modtager", :limit => 20
-    config.add_facet_field 'sender_location_ssim', :label => I18n.t('blacklight.search.facets.sender_location'), :limit => 20
-    config.add_facet_field 'recipient_location_ssim', :label => I18n.t('blacklight.search.facets.recipient_location'), :limit => 20
+    config.add_facet_field 'sender_ssim', :label => "Afsender", :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'recipient_ssim', :label => "Modtager", :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'sender_location_ssim', :label => I18n.t('blacklight.search.facets.sender_location'), :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'recipient_location_ssim', :label => I18n.t('blacklight.search.facets.recipient_location'), :limit => 20, index_range: 'A'..'Z'
     config.add_facet_field 'year_itsi', label: 'Afsendelsesdato',
                            range: {
                                num_segments: 10,
