@@ -17,5 +17,13 @@ WickedPdf.config = {
 
   # Layout file to be used for all PDFs
   # (but can be overridden in `render :pdf` calls)
-  # layout: 'pdf.html',
+  page_size: 'A4',
+  header:  {right: '[page]',
+            spacing: 5},
+  footer: { html: {template: 'shared/pdf_footer.pdf.erb'},
+            spacing: 5},
+  margin: {top: 15, # default 10 (mm)
+           bottom: 20,
+           left: 20,
+           right: 12}
 }

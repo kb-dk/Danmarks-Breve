@@ -85,14 +85,15 @@ window.dkBreve = (function (window, $, undefined) {
             }
         },
         onDocumentReady: function () {
-            var headerFooterHeight = dkBreve.getFooterAndHeaderHeight(),
-                windowHeight = $(window).innerHeight(),
-                contentHeight = windowHeight - headerFooterHeight;
-            dkBreve.setContentHeight(contentHeight);
-
             // Collapse/Expand metadata column
             $('.collapseMetadata').click(function (e) {
-                $(this).closest('.contentContainer').toggleClass('nometa');
+                $('#letter_metadata_container').toggleClass('col-md-1 col-md-2');
+                $('#letter_metadata_container').toggleClass('nometa');
+                $('#letter_ocr_container').toggleClass('col-md-6 col-md-5');
+
+                $('#text_metadata_container').toggleClass('col-md-1 col-md-2');
+                $('#text_metadata_container').toggleClass('nometa');
+                $('#text_ocr_container').toggleClass('col-md-6 col-md-5');
             });
 
             // set up handler for ocr fullscreen
@@ -130,8 +131,6 @@ window.dkBreve = (function (window, $, undefined) {
             });
 
             $('.escFullScreenButton').click(dkBreve.closeFullScreen);
-
-            $(window).resize(function () { dkBreve.onWindowResize.call(dkBreve); });
         },
         onKbOSDReady : function (kbosd) {
             var that = this;
@@ -148,9 +147,6 @@ window.dkBreve = (function (window, $, undefined) {
                 $('.ocr').scroll(this.onOcrScroll);
             }
         },
-        onWindowResize : function () {
-            this.setContentHeight($(window).innerHeight() - this.getFooterAndHeaderHeight());
-        },
         closeFullScreen : function () {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -160,20 +156,6 @@ window.dkBreve = (function (window, $, undefined) {
                 document.webkitExitFullscreen();
             } else if (document.msExitFullscreen) {
                 document.msExitFullscreen();
-            }
-        },
-        getFooterAndHeaderHeight : function () {
-            return $('.page_links').outerHeight() +
-                $('.workNavBar').outerHeight() +
-                $('h1[itemprop=name]').outerHeight() +
-                $('.search-widgets').outerHeight() + // FIXME: According to me this shouldn't be necessary, since these are pulled right and thereby out of the flow, but I can observe that the end result lacks approx 32 px.? /HAFE
-                $('#user-util-collapse').outerHeight() +
-                $('footer.pageFooter').outerHeight();
-        },
-        setContentHeight : function (height) {
-            if (height > 200) {
-                $('.contentContainer').css('maxHeight', height);
-                $('.textAndFacsimileContainer').css('minHeight', height);
             }
         }
     };

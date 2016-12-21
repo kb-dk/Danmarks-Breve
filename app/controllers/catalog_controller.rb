@@ -3,18 +3,10 @@
 class CatalogController < ApplicationController
 
   include BlacklightRangeLimit::ControllerOverride
-  include BlacklightAdvancedSearch::Controller
 
   include Blacklight::Catalog
-  
-  configure_blacklight do |config|
-    # default advanced config values
-    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
-    # config.advanced_search[:qt] ||= 'advanced'
-    config.advanced_search[:url_key] ||= 'advanced'
-    config.advanced_search[:query_parser] ||= 'dismax'
-    config.advanced_search[:form_solr_parameters] ||= {}
 
+  configure_blacklight do |config|
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
@@ -85,8 +77,10 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
-    config.add_facet_field 'sender_ssim', :label => "Afsender"
-    config.add_facet_field 'recipient_ssim', :label => "Modtager"
+    config.add_facet_field 'sender_ssim', :label => "Afsender", :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'recipient_ssim', :label => "Modtager", :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'sender_location_ssim', :label => I18n.t('blacklight.search.facets.sender_location'), :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'recipient_location_ssim', :label => I18n.t('blacklight.search.facets.recipient_location'), :limit => 20, index_range: 'A'..'Z'
     config.add_facet_field 'year_itsi', label: 'Afsendelsesdato',
                            range: {
                                num_segments: 10,
@@ -94,7 +88,7 @@ class CatalogController < ApplicationController
                                segments: true,
                                maxlength: 4
                            }
-   
+
 
     # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['cat_ssi', 'language_facet']
     # config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
@@ -121,7 +115,7 @@ class CatalogController < ApplicationController
 
     # Letter specific metadata
     config.add_index_field 'volume_title_tesim', :label => I18n.t('blacklight.search.part_of'), helper_method: :show_volume_link
-    config.add_index_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
+    config.add_index_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location')
     config.add_index_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
 
     # solr fields to be displayed in the show (single result) view
@@ -130,9 +124,9 @@ class CatalogController < ApplicationController
     # Letter specific metadata
     config.add_show_field 'sender_tesim', :label => I18n.t('blacklight.search.sender'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
-    config.add_show_field 'sender_location_tesim', :label =>  I18n.t('blacklight.search.senders_location')
+    config.add_show_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location')
     config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
-    config.add_show_field 'author_name_tesim', :label => 'Forfatter', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
+    config.add_show_field 'author_name_tesim', :label => I18n.t('blacklight.search.letter_publisher'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'editor_name_tesim', :label => 'Redaktør', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
     config.add_show_field 'publisher_name_ssi', :label => 'Udgiver'
@@ -158,8 +152,6 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise.
 
     config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
-      ## do not parse the advanced search fields
-      field.advanced_parse = false
     end
 
 
@@ -167,8 +159,7 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-    config.add_search_field( I18n.t('blacklight.search.sender')) do |field|
-      field.advanced_parse = false
+    config.add_search_field(I18n.t('blacklight.search.sender')) do |field|
 
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
@@ -180,8 +171,7 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field( I18n.t('blacklight.search.recipient')) do |field|
-      field.advanced_parse = false
+    config.add_search_field(I18n.t('blacklight.search.recipient')) do |field|
 
       field.solr_local_parameters = {
           qf: '$recipient_qf',
@@ -189,22 +179,21 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field( I18n.t('blacklight.search.senders_location')) do |field|
-      field.advanced_parse = false
+    config.add_search_field(I18n.t('blacklight.search.senders_location')) do |field|
+
       field.solr_local_parameters = {
           qf: '$sender_location_qf',
           pf: 'sender_location_pf'
       }
     end
 
-    config.add_search_field( I18n.t('blacklight.search.recipients_location')) do |field|
-      field.advanced_parse = false
+    config.add_search_field(I18n.t('blacklight.search.recipients_location')) do |field|
+
       field.solr_local_parameters = {
           qf: '$recipient_location_qf',
           pf: '$recipient_location_pf'
       }
     end
-
 
 
     # Specifying a :qt only to show it's possible, and so our internal automated
@@ -223,10 +212,10 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # # except in the relevancy case).
-    config.add_sort_field 'score desc', label: I18n.t('blacklight.search.form.sort.relevance')
+    config.add_sort_field 'year_itsi asc', label: I18n.t('blacklight.search.form.sort.year')
     config.add_sort_field 'sortby_sender_ssi asc', label: I18n.t('blacklight.search.form.sort.sender')
     config.add_sort_field 'sortby_recipient_ssi asc', label: I18n.t('blacklight.search.form.sort.recipient')
-    config.add_sort_field 'year_itsi asc', label: I18n.t('blacklight.search.form.sort.year')
+    config.add_sort_field 'score desc', label: I18n.t('blacklight.search.form.sort.relevance')
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
@@ -249,7 +238,7 @@ class CatalogController < ApplicationController
       @response, @document = fetch URI.unescape(params[:id])
       respond_to do |format|
         format.html { setup_next_and_previous_documents }
-        format.json { render json: { response: { document: @document } } }
+        format.json { render json: {response: {document: @document}} }
         format.pdf { send_pdf(@document, 'text') }
         additional_export_formats(@document, format)
       end
@@ -266,21 +255,25 @@ class CatalogController < ApplicationController
     # cache files in the public folder based on their id
     # perhaps using the Solr document modified field
     def send_pdf(document, type)
-      name = document['work_title_tesim'].first.strip rescue document.id
+      (type.eql? 'image') ? left_margin = 35 : left_margin = 20 # If we render an image the left margin should be longer
+      pdf_name = 'Danmarks_Breve'
       path = Rails.root.join('public', 'pdfs', "#{document.id.gsub('/', '_')}_#{type}.pdf")
       solr_timestamp = Time.parse(document['timestamp'])
       file_mtime = File.mtime(path) if File.exist? path.to_s
       # display the cached pdf if solr doc timestamp is older than the file's modified date
       if File.exist? path.to_s and ((type == 'text' and solr_timestamp < file_mtime) or type == 'image')
-        send_file path.to_s, type: 'application/pdf', disposition: :inline, filename: name+".pdf"
+        send_file path.to_s, type: 'application/pdf', disposition: :inline, filename: pdf_name+".pdf"
       else
-        render pdf: name, footer: { right: '[page] af [topage] sider' },
-        save_to_file: path
+        # Global configuration for all pdfs is placed in config/initializers/wicked_pdf.rb
+        render pdf: pdf_name,
+               save_to_file: path,
+               margin: {top: 15, # default 10 (mm)
+                        bottom: 20,
+                        left: left_margin,
+                        right: 12}
       end
     end
 
 
   end
-
-
 end

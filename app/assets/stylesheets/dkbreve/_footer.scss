@@ -1,16 +1,18 @@
-footer.pageFooter{
-  @include gradient-vertical($gray-lighter, #FFF);
+footer.pageFooter.dkbreveFooter{
+  @include gradient-vertical(#fff, #FFF);
+  box-shadow: 0 -10px 6px -6px #ccc;
   font-family: $font-family-nav;
-  padding: $grid-gutter-width 0;
-  h2{
-    @extend .h3;
+  padding: 20px 0 10px 0;
+  span{
+    display: inline-block;
+    padding: 0 2px;
   }
-  h4{
-    @extend .h5;
-
-  }
+  margin:0;
   img{
-    width: 42px;
+    width:17px;
+    vertical-align: top;
+  }
+  .media-body{
+    padding-top:3px;
   }
 }
-
