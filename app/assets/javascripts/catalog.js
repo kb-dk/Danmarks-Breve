@@ -30,12 +30,17 @@ function checkCookie() {
     }
 }
 
-// Function to sort the facet modal on alphabetical order by default: When the open event starts for the modal,
-// the 'Alfabetisk' button is clicked
+
 $(document).ready(function () {
-    if($('body').is('.blacklight-catalog-index')) { // Do this only in the index page
-        $('#ajax-modal').on('shown.bs.modal', function (e) {
-            $('.sort_change.az.btn.btn-default').click();
+
+    // Logic to sort the facet modal on alphabetical order by default: When the open event starts for the modal,
+    // the 'Alfabetisk' button is clicked
+    if ($('body').is('.blacklight-catalog-index')) { // Do this only in the index page
+        $('#ajax-modal').on('show.bs.modal', function (e) { // When the modal open event starts
+            if (!$('#ajax-modal').is(':visible')) { // If the modal is hidden
+                $('.sort_change.az.btn.btn-default').click(); // Click the button
+            }
         });
     }
+
 });
