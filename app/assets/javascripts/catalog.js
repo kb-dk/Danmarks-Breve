@@ -30,8 +30,17 @@ function checkCookie() {
     }
 }
 
-// hide the range limit in the advanced search limits, since it does not work
-// TODO get it fixed
-$(document).ready(function() {
-    $(".blacklight-year_itsi",".advanced-facet-limits").hide();
+
+$(document).ready(function () {
+
+    // Logic to sort the facet modal on alphabetical order by default: When the open event starts for the modal,
+    // the 'Alfabetisk' button is clicked
+    if ($('body').is('.blacklight-catalog-index')) { // Do this only in the index page
+        $('#ajax-modal').on('show.bs.modal', function (e) { // When the modal open event starts
+            if (!$('#ajax-modal').is(':visible')) { // If the modal is hidden
+                $('.sort_change.az.btn.btn-default').click(); // Click the button
+            }
+        });
+    }
+
 });

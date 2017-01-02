@@ -3,18 +3,10 @@
 class CatalogController < ApplicationController
 
   include BlacklightRangeLimit::ControllerOverride
-  # include BlacklightAdvancedSearch::Controller
 
   include Blacklight::Catalog
 
   configure_blacklight do |config|
-    # default advanced config values
-    # config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
-    # # config.advanced_search[:qt] ||= 'advanced'
-    # config.advanced_search[:url_key] ||= 'advanced'
-    # config.advanced_search[:query_parser] ||= 'dismax'
-    # config.advanced_search[:form_solr_parameters] ||= {}
-
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
@@ -85,8 +77,10 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'cat_ssi', :label => I18n.t('blacklight.search.categori'), helper_method: :translate_model_names
-    config.add_facet_field 'sender_ssim', :label => "Afsender"
-    config.add_facet_field 'recipient_ssim', :label => "Modtager"
+    config.add_facet_field 'sender_ssim', :label => "Afsender", :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'recipient_ssim', :label => "Modtager", :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'sender_location_ssim', :label => I18n.t('blacklight.search.facets.sender_location'), :limit => 20, index_range: 'A'..'Z'
+    config.add_facet_field 'recipient_location_ssim', :label => I18n.t('blacklight.search.facets.recipient_location'), :limit => 20, index_range: 'A'..'Z'
     config.add_facet_field 'year_itsi', label: 'Afsendelsesdato',
                            range: {
                                num_segments: 10,
@@ -132,7 +126,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location')
     config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
-    config.add_show_field 'author_name_tesim', :label => 'Forfatter', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
+    config.add_show_field 'author_name_tesim', :label => I18n.t('blacklight.search.letter_publisher'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'editor_name_tesim', :label => 'Redaktør', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
     config.add_show_field 'publisher_name_ssi', :label => 'Udgiver'
@@ -158,8 +152,6 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise.
 
     config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
-      ## do not parse the advanced search fields
-      field.advanced_parse = false
     end
 
 
@@ -168,7 +160,6 @@ class CatalogController < ApplicationController
     # of Solr search fields.
 
     config.add_search_field(I18n.t('blacklight.search.sender')) do |field|
-      field.advanced_parse = false
 
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
@@ -181,7 +172,6 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field(I18n.t('blacklight.search.recipient')) do |field|
-      field.advanced_parse = false
 
       field.solr_local_parameters = {
           qf: '$recipient_qf',
@@ -190,7 +180,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field(I18n.t('blacklight.search.senders_location')) do |field|
-      field.advanced_parse = false
+
       field.solr_local_parameters = {
           qf: '$sender_location_qf',
           pf: 'sender_location_pf'
@@ -198,7 +188,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field(I18n.t('blacklight.search.recipients_location')) do |field|
-      field.advanced_parse = false
+
       field.solr_local_parameters = {
           qf: '$recipient_location_qf',
           pf: '$recipient_location_pf'
@@ -222,10 +212,10 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # # except in the relevancy case).
-    config.add_sort_field 'score desc', label: I18n.t('blacklight.search.form.sort.relevance')
+    config.add_sort_field 'year_itsi asc', label: I18n.t('blacklight.search.form.sort.year')
     config.add_sort_field 'sortby_sender_ssi asc', label: I18n.t('blacklight.search.form.sort.sender')
     config.add_sort_field 'sortby_recipient_ssi asc', label: I18n.t('blacklight.search.form.sort.recipient')
-    config.add_sort_field 'year_itsi asc', label: I18n.t('blacklight.search.form.sort.year')
+    config.add_sort_field 'score desc', label: I18n.t('blacklight.search.form.sort.relevance')
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
