@@ -19,10 +19,11 @@
     transition: width 0.3s ease, margin 0.3s ease;
   }
 
+  .col-md-1 {
+    width: 3%;
+  }
+
   .nometa {
-    header .glyphicon-chevron-left{
-      transform:rotate(-180deg);
-    }
     article{
       opacity:0;
       height:0px;
@@ -33,6 +34,15 @@
 .letter_text_ocr_container {
   border-left:1px solid #ccc;
   border-right:1px solid #ccc;
+}
+
+.collapseMetadata {
+  .glyphicon-chevron-left {
+    padding-top:8px;
+  }
+  .glyphicon-chevron-right {
+    padding-top:8px;
+  }
 }
 
 #kbOSDInstance {
