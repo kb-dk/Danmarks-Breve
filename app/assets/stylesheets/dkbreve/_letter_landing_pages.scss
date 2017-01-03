@@ -43,6 +43,7 @@
 
 
 .collapseMetadata {
+  cursor:pointer;
   .glyphicon-chevron-left {
     padding-top:8px;
   }
@@ -102,7 +103,4 @@
       display:block;
     }
   }
-}
-.pull-left.collapseMetadata{
-  cursor:pointer;
 }
