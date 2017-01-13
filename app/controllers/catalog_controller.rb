@@ -129,7 +129,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'author_name_tesim', :label => I18n.t('blacklight.search.letter_publisher'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'editor_name_tesim', :label => 'Redaktør', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
-    config.add_show_field 'publisher_name_ssi', :label => 'Udgiver'
+    config.add_show_field 'publisher_name_ssi', :label => 'Forlag'
     config.add_show_field 'published_date_ssi', :label => 'Udgivelsesdato'
     config.add_show_field 'published_place_ssi', :label => 'Udgivelsessted'
 
