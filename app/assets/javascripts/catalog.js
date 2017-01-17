@@ -42,5 +42,5 @@ $(document).ready(function () {
             }
         });
     }
-
+    $("ul.missing").find("a").text("Ukendt");
 });
