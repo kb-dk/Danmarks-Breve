@@ -124,8 +124,8 @@ class CatalogController < ApplicationController
     # Letter specific metadata
     config.add_show_field 'sender_tesim', :label => I18n.t('blacklight.search.sender'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
-    config.add_show_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location')
-    config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
+    config.add_show_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location'), helper_method: :google_map_link
+    config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location'), helper_method: :google_map_link
     config.add_show_field 'author_name_tesim', :label => I18n.t('blacklight.search.letter_publisher'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'editor_name_tesim', :label => 'Redaktør', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
