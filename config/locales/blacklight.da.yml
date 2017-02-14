@@ -263,7 +263,7 @@ da:
         text: 'Tekst'
         facsimile: 'Faksimile'
         show_more: 'Vis mere'
-        edition: 'Udgivelse'
+        edition: 'Bogens indhold'
         rex: "Bestil i Rex"
       show:
         title: '%{document_title} - %{application_name}'
