@@ -1,2 +1,95 @@
-<h1>Om Danmarks Breve</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <!-- Mobile viewport optimization h5bp.com/ad -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <!-- Internet Explorer use the highest version available -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+  <!--[if IEMobile]>
+  <meta http-equiv="cleartype" content="on">
+  <![endif]-->
+
+  <title><%= render_page_title %></title>
+  <%= opensearch_description_tag application_name, opensearch_catalog_url(format: 'xml') %>
+  <%= favicon_link_tag %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= content_for(:head) %>
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+<body class="<%= render_body_class %>" onload="checkCookie()">
+
+<%= render :partial => 'shared/header_navbar' %>
+
+<%= render partial: 'shared/ajax_modal' %>
+
+<div id="main-container" class="<%= container_classes %>">
+  <%= content_tag :h1, application_name, class: 'sr-only application-heading' %>
+
+  <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
+
+  <div id="content">
+    <div class="container">
+      <div class="page-header">
+        <div >
+          <h2 class="page-heading"><span class="glyphicon glyphicon-info-sign"></span> Om Danmarks Breve</h2>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+
+          <div id="om-dkbreve" class="document">
+            <div class="text-content">
+              <div class="text">
+
+                <h1>Hvad er Danmarks Breve?</h1>
+                <p>I <i>Danmarks breve</i> findes digitaliseringer af de trykte brevudgivelser fra Det Kgl. Bibliotek.
+                  Digitaliseringen gør det muligt at søge på tværs i brevudgivelserne og finde breve fra samme afsender,
+                  ligegyldigt hvilken brevudgivelse brevet er udkommet i, desuden gør digitaliseringen det nemmere for
+                  flere lånere at benytte værkerne.</p>
+                <h1>Hvad kan jeg finde?</h1>
+                <p><i>Danmarks Breve</i> er resultatet af flere års scanningsarbejde af bøger, metadatering og programmering
+                  af selve brevbasen. I første omgang er over 12.000 breve gjort tilgængelige og i alt indeholder
+                  projektet over 70.000 breve, der løbende vil blive frigivet efterhånden som ophavsretten på
+                  brevudgivelserne udløber. I fremtiden håber Det Kgl. Bibliotek desuden på at kunne indlemme flere
+                  breve i brevbasen fra bl.a. andre institutioner og bibliotekets egne samlinger.
+                </p>
+                <p>En samlet liste over brevudgivelser som er tilgængelige i <i>Danmarks Breve</i> nu.</p>
+                <h1>Hvor kommer brevenes data fra?</h1>
+                <p>I projektet med at få <i>Danmarks Breve</i> klar til at gå online er en stor del af metadataen,
+                  som der findes i brevudgivelserne, blevet harmoniseret for at forenkle søgningen. Principperne
+                  forklares i ”Hvordan søger jeg?”. I nogle tilfælde har denne harmonisering kastet nye metadata af
+                  sig, men som hovedregel så stammer metadataen fra brevudgivernes arbejde med materialet.
+                  Udgivelsesprincipperne for de enkelte brevudgivelser kan findes ved at få vist hele den pågældende
+                  brevudgivelse.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<%= render :partial => 'shared/footer' %>
+</body>
+</html>
+
+
+
+

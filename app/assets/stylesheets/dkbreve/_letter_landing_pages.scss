@@ -1,0 +1,106 @@
+.letter_container {
+
+  width: 100%;
+
+
+  header{
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    padding:3px;
+    min-height: 40px;
+  }
+  article{
+    padding: 8px;
+  }
+  .row div {
+    padding:0px;
+    -webkit-transition: width 0.3s ease, margin 0.3s ease;
+    -moz-transition: width 0.3s ease, margin 0.3s ease;
+    -o-transition: width 0.3s ease, margin 0.3s ease;
+    transition: width 0.3s ease, margin 0.3s ease;
+  }
+
+  .col-md-1 {
+    width: 3%;
+  }
+
+  .nometa {
+    article{
+      opacity:0;
+      height:0px;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .letter_text_ocr_container {
+    border-left:1px solid #ccc;
+    border-right:1px solid #ccc;
+    min-height:600px;
+  }
+}
+
+
+
+.collapseMetadata {
+  cursor:pointer;
+  .glyphicon-chevron-left {
+    padding-top:8px;
+  }
+  .glyphicon-chevron-right {
+    padding-top:8px;
+  }
+}
+
+#kbOSDInstance {
+  height: $letter-page-height;
+}
+
+.ocr{
+  height:auto;
+  max-height:$letter-page-height;
+  overflow:auto;
+  .escFullScreenButton{
+    display:none;
+    position:fixed;
+    top:30px;
+    right:30px;
+    opacity:0.8;
+  }
+  &:-webkit-full-screen{
+    padding:5% 7%;
+    max-width:57em;
+    background-color:#fff;
+    font-family:Serif;
+    .escFullScreenButton{
+      display:block;
+    }
+  }
+  &:-moz-full-screen{
+    padding:5% 7%;
+    max-width:57em;
+    background-color:#fff;
+    font-family:Serif;
+    .escFullScreenButton{
+      display:block;
+    }
+  }
+  &:-ms-fullscreen{
+    padding:5% 7% !important;
+    max-width:57em;
+    background-color:#fff;
+    font-family:Serif;
+    .escFullScreenButton{
+      display:block;
+    }
+  }
+  &:fullscreen{
+    padding:20px 10%;
+    max-width:57em;
+    background-color:#fff;
+    font-family:Serif;
+    .escFullScreenButton{
+      display:block;
+    }
+  }
+}

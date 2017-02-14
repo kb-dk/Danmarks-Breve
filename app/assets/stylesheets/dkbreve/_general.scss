@@ -1,0 +1,221 @@
+
+body{
+
+  a {
+    text-decoration: none !important;
+
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+}
+.box-shadow{
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.09);
+}
+.document, .facet-label, #content{
+  a[href] {
+    color: $blue;
+  }
+}
+.downloadLinkContainer .dlButton {
+  border: none;
+}
+
+#ocrFullscreenButton {
+  border: none;
+}
+
+.btn-danger {
+  color: white !important;
+}
+
+#main-container{
+    min-height: 650px;
+}
+#search-navbar{
+  background-color: transparent;
+  border-color: transparent;
+  .input-group-btn.hidden-xs{
+    @extend .form-group;
+  }
+  #search_field{
+    @extend .form-control;
+    padding: 10px 16px;
+    height: 46px;
+    line-height: 46px;
+    margin-right: 10px;
+    width: auto !important;
+    border-radius: 6px !important;
+    //border-color: $dropdown-fallback-border;
+  }
+  #q.search_q{
+    border-radius: 6px 0 0 6px !important;
+  }
+}
+
+#search{
+  .submit-search-text{
+    display: none;
+  }
+}
+// Contains tools for work
+.workNavBar{
+  form{
+    @extend .pull-right;
+  }
+  .btn-group{
+    .contentSearch, .tableOfContent, #emailLink, #citationLink, #feedbackLink{
+      @extend .btn;
+      @extend .btn-default;
+      border: none;
+      background: none;
+      color: $gray-light;
+      &:hover{
+        background: $gray-lighter;
+      }
+    }
+    #emailLink{
+      &:before{
+        @extend .glyphicon-envelope;
+        @extend .glyphicon;
+        position: relative;
+        padding-right:4px;
+      }
+    }
+    #citationLink{
+      &:before{
+        @extend .glyphicon-pencil;
+        @extend .glyphicon;
+        position: relative;
+        padding:4px;
+      }
+    }
+    #feedbackLink{
+      &:before{
+        @extend .glyphicon-comment;
+        @extend .glyphicon;
+        position: relative;
+        padding-right:4px;
+      }
+    }
+  }
+  #toc ul{
+    @extend .list-unstyled;
+    padding:0px $grid-gutter-width;
+    li a{
+      display: block;
+      border-bottom: 1px dotted silver;
+    }
+  }
+
+}
+
+.nav-tab-instance{
+ // background: $gray-lighter;
+  ul{
+    border: none;
+    padding:0px $grid-gutter-width;
+    li{
+      margin-bottom: 0px;
+      a{
+        border: none!important;
+      }
+    }
+  }
+}
+.workHeader, .document-metadata .blacklight-author_ssi,
+.workHeader, .document-metadata .blacklight-volume_title_tesim{
+  a{
+    text-decoration: underline;
+  }
+}
+
+.pageBreak{
+  display: block;
+  margin:$grid-gutter-width/2 0px 0px 0px;
+  padding:$grid-gutter-width/2 0px ;
+  font-size: $font-size-large;
+  line-height: $line-height-base;
+  border-top: 1px dotted $gray;
+  text-align: center;
+  a{
+
+    &:after{
+      font-family: 'Glyphicons Halflings';
+      content:'\e043';
+      margin-left: 5px;
+
+    }
+  }
+}
+.blacklight-catalog-facsimile{
+  .pageBreak a:after{
+    content:'\e052';
+
+  }
+
+}
+
+
+.search{
+  padding: $grid-gutter-width 0;
+  select{
+    margin-right:$grid-gutter-width;
+  }
+}
+
+.glyphicon{
+  color : $brand-secondary;
+}
+#documents {
+  .document.blacklight-letter {
+    @extend .well;
+    @extend .box-shadow;
+  }
+}
+
+.image {
+  background-position: top;
+  height: 250px;
+  width: 100%;
+  padding: 20px 15px;
+  border-radius: 10px ;
+}
+
+.image1{
+  background: url(asset-path('about.jpg')) no-repeat;
+  background-size: cover;
+}
+
+.image2{
+  background: url(asset-path('help.jpg')) no-repeat;
+  background-size: cover;
+}
+.frontpage{
+  h3{
+    color:$blue;
+  }
+}
+
+
+.navbar-brand{
+  font-size: 22px;
+  width: 200px !important;
+  font-weight: 500;
+}
+
+.downloadLinkContainer{
+  a{
+    background-color: transparent !important;
+  }
+}
+#ocrFullscreenButton, #citationLink{
+  background-color: transparent !important;
+  color: $blue !important;
+}
+
+.pageBreak a::after{
+  content:'';
+}

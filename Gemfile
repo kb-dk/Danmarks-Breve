@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '< 5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -19,15 +19,12 @@ gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'blacklight', "~> 6.0"
-gem "blacklight_advanced_search"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 # Use ActiveModel has_secure_password
@@ -66,5 +63,9 @@ gem 'high_voltage', '~> 3.0.0'
 gem 'kbcookie', '>=0.0.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/kbcookie.git'
 gem 'snippet_server', '>=0.1.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/snippet-gem.git'
 
-gem 'blacklight_range_limit'
+gem 'blacklight_range_limit', '>= 6'
 gem 'exception_handler', '~> 0.5.0'
+
+group :development do
+  gem 'xray-rails'
+end
