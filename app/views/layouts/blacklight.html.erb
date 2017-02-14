@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!--If it is running in production mode, load the Google analytics partial-->
-    <% if Rails.env.production? %> <!-- && (root_url.include? "danmarksbreve.kb.dk") %> -->
+    <% if Rails.env.production? && (root_url.include? "danmarksbreve.kb.dk") %>
         <%= render :partial => 'shared/analytics' %>
     <% end %>
 
