@@ -57,6 +57,9 @@
   canvas{
     border: none !important;
   }
+  .hideWhenSmall{
+    @extend .hidden-md;
+  }
 }
 
 .ocr{
