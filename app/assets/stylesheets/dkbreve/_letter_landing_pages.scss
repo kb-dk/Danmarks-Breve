@@ -53,7 +53,13 @@
 }
 
 #kbOSDInstance {
-  height: $letter-page-height;
+  height: $letter-page-height + 55px;
+  canvas{
+    border: none !important;
+  }
+  .hideWhenSmall{
+    @extend .hidden-md;
+  }
 }
 
 .ocr{
