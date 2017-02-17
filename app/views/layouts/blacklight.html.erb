@@ -11,6 +11,11 @@
     <!-- Internet Explorer use the highest version available -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+    <!--If it is running in production mode, load the Google analytics partial-->
+    <% if Rails.env.production? && (root_url.include? "danmarksbreve.kb.dk") %>
+        <%= render :partial => 'shared/analytics' %>
+    <% end %>
+
     <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
     <!--[if IEMobile]>
       <meta http-equiv="cleartype" content="on">
