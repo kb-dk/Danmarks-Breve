@@ -23,6 +23,13 @@ body{
   border: none;
 }
 
+//Set z-index to avoid the osd toolbar to be on the top of the download icon
+.downloadLinkContainer {
+  span {
+    z-index: 1000;
+  }
+}
+
 #ocrFullscreenButton {
   border: none;
 }
