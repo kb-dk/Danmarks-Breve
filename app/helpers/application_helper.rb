@@ -17,6 +17,15 @@ module ApplicationHelper
     rescue
   end
 
+  # Helper method to show link to the location on the google map for Afsendelsessted and Modtagelsessted
+  def google_map_link args
+    # Find the field value and convert array to a comma separated string
+    location = args[:value].join(', ')
+    return unless location.present?
+    # Make a link to google map in a new tab/window
+    link_to location, "https://www.google.dk/maps/place/"+location, :target => "_blank"
+  end
+
   def present_snippets args
     val = args[:value]
     return unless val.present?
