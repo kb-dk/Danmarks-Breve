@@ -25,8 +25,9 @@ body{
 
 //Set z-index to avoid the osd toolbar to be on the top of the download icon
 .downloadLinkContainer {
-  span {
+  a {
     z-index: 1000;
+    position: relative;
   }
 }
 
