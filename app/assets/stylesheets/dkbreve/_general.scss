@@ -30,7 +30,9 @@ body{
     position: relative;
   }
 }
-
+ul.noIndent{
+  padding-left: 12px;
+}
 #ocrFullscreenButton {
   border: none;
 }
