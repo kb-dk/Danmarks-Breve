@@ -7,7 +7,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     solr_params[:fq] = []
     solr_params[:fq] << 'cat_ssi:letterbook'
     solr_params[:sort] = []
-    solr_params[:sort] << 'sort_title_ssi asc'
+    solr_params[:sort] << 'publisher_name_ssi asc'
     solr_params[:rows] = 10000
   end
 end
