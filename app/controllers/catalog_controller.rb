@@ -104,10 +104,10 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'author_name_tesim', :label => 'Forfatter'
-    config.add_index_field 'publisher_name_ssi', :label => 'Udgiver'
+    config.add_index_field 'author_name_tesim', :label => 'Udgiver'
+    config.add_index_field 'publisher_name_ssi', :label => 'Forlag'
     config.add_index_field 'published_place_ssi', :label => 'Udgivelsessted'
-    config.add_index_field 'published_date_ssi', :label => 'Udgivelsesdato'
+    config.add_index_field 'published_date_ssi', :label => 'Udgivelsesår'
 
     # this adds basic highlighting to index results
     config.add_index_field 'text_tesim', :highlight => true, :label => I18n.t('blacklight.search.index.in_text'), helper_method: :present_snippets, short_form: true
