@@ -25,19 +25,21 @@
           <% document_show_fields(document).each do |field_name, field| -%>
               <% if (should_render_show_field? document, field) && (document.has?(field_name, /\w/)) %>
                   <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
-                  <dd class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_value document, field: field_name %></dd>
+                 <dd class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_value document, field: field_name %></dd>
               <% end -%>
           <% end -%>
         </dl>
-        <div><%= link_to 'Dansk Biografisk Leksikon', "http://denstoredanske.dk/Dansk_Biografisk_Leksikon", :target => "_blank" %></div>
-        <div><%= link_to 'Den Danske Ordbog', "http://ordnet.dk/ddo", :target => "_blank" %></div>
+        <ul class="noIndent">
+        <li><%= link_to 'Dansk Biografisk Leksikon', "http://denstoredanske.dk/Dansk_Biografisk_Leksikon", :target => "_blank" %></li>
+        <li><%= link_to 'Den Danske Ordbog', "http://ordnet.dk/ddo", :target => "_blank"  %></li>
+        </ul>
         <br>
       </article>
     </div>
     <div class="col-md-5 letter_text_ocr_container" id="letter_ocr_container">
       <header>
         <button id="ocrFullscreenButton" class="btn btn-default pull-right" title="Se tekst i fuld skærm">
-          <span class="glyphicon glyphicon-fullscreen"></span></button>
+          <i class="fa fa-expand fa-lg"></i></button>
         <div class="downloadLinkContainer">
           <%= link_to(solr_document_path(document, format: :pdf), :target => "_blank", class: 'btn btn-default dlButton') do %>
               <span class="glyphicon glyphicon-save"></span> Tekst
@@ -62,13 +64,16 @@
         <%# OpenSeadragon start %>
         <div id="kbOSDInstance">
           <div class="kbOSDViewer">
+            <div class="kbOSDToolbar"></div>
             <div class="kbOSDContent"></div>
-            <div class="kbOSDFooter"></div>
           </div>
         </div>
       </article>
       <script type="text/javascript">
           var kbOSDconfig = [<%= Snippet::SnippetServer.openSeadragon_snippet(opts) %>];
+
+          //Hide rotation and flip control
+          kbOSDconfig[0].showTransformationControl = false;
 
           // Converting certain strings => numbers, that OpenSeadragon expects to be numbers, but Sigges serializer returns as strings
           // TODO: This ought to be done serverside, but until we get a better serializer, it's easier to do clientside.
@@ -89,7 +94,7 @@
               });
           }
       </script>
-      <script src="https://static.kb.dk/kbOpenSeadragon/js/KbOSD_bundle_min.js"></script>
+      <script src="http://static.kb.dk/kbOpenSeadragon/2.2.0/js/KbOSD_bundle_min.js" ></script>
       <%# OpenSeadragon end %>
 
     </div>

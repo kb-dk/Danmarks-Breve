@@ -20,7 +20,6 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
         :qt => 'search',
         :rows => 10,
-        :fq => ['cat_ssi:letter'],
         :hl => 'true',
         :'hl.snippets' => '3',
         :'hl.simple.pre' => '<em class="highlight" >',
@@ -105,10 +104,10 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'author_name_tesim', :label => 'Forfatter'
-    config.add_index_field 'publisher_name_ssi', :label => 'Udgiver'
+    config.add_index_field 'author_name_tesim', :label => 'Udgiver'
+    config.add_index_field 'publisher_name_ssi', :label => 'Forlag'
     config.add_index_field 'published_place_ssi', :label => 'Udgivelsessted'
-    config.add_index_field 'published_date_ssi', :label => 'Udgivelsesdato'
+    config.add_index_field 'published_date_ssi', :label => 'Udgivelsesår'
 
     # this adds basic highlighting to index results
     config.add_index_field 'text_tesim', :highlight => true, :label => I18n.t('blacklight.search.index.in_text'), helper_method: :present_snippets, short_form: true
@@ -124,8 +123,8 @@ class CatalogController < ApplicationController
     # Letter specific metadata
     config.add_show_field 'sender_tesim', :label => I18n.t('blacklight.search.sender'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'recipient_tesim', :label => I18n.t('blacklight.search.recipient'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
-    config.add_show_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location')
-    config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location')
+    config.add_show_field 'sender_location_tesim', :label => I18n.t('blacklight.search.senders_location'), helper_method: :google_map_link
+    config.add_show_field 'recipient_location_tesim', :label => I18n.t('blacklight.search.recipients_location'), helper_method: :google_map_link
     config.add_show_field 'author_name_tesim', :label => I18n.t('blacklight.search.letter_publisher'), :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'editor_name_tesim', :label => 'Redaktør', :separator_options => {:last_word_connector => ' '+I18n.t('blacklight.and')+' '}
     config.add_show_field 'date_ssim', :label => I18n.t('blacklight.date')
@@ -152,6 +151,9 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise.
 
     config.add_search_field(I18n.t('blacklight.search.all_fields')) do |field|
+      field.solr_parameters = {
+         fq: 'cat_ssi:letter'
+      }
     end
 
 
@@ -169,6 +171,9 @@ class CatalogController < ApplicationController
           qf: '$sender_qf',
           pf: '$sender_pf'
       }
+      field.solr_parameters = {
+          fq: 'cat_ssi:letter'
+      }
     end
 
     config.add_search_field(I18n.t('blacklight.search.recipient')) do |field|
@@ -176,6 +181,9 @@ class CatalogController < ApplicationController
       field.solr_local_parameters = {
           qf: '$recipient_qf',
           pf: '$recipient_pf'
+      }
+      field.solr_parameters = {
+          fq: 'cat_ssi:letter'
       }
     end
 
@@ -185,6 +193,9 @@ class CatalogController < ApplicationController
           qf: '$sender_location_qf',
           pf: 'sender_location_pf'
       }
+      field.solr_parameters = {
+          fq: 'cat_ssi:letter'
+      }
     end
 
     config.add_search_field(I18n.t('blacklight.search.recipients_location')) do |field|
@@ -192,6 +203,9 @@ class CatalogController < ApplicationController
       field.solr_local_parameters = {
           qf: '$recipient_location_qf',
           pf: '$recipient_location_pf'
+      }
+      field.solr_parameters = {
+          fq: 'cat_ssi:letter'
       }
     end
 
@@ -274,6 +288,20 @@ class CatalogController < ApplicationController
       end
     end
 
+    def brevudgivelser
+      (@response, @document_list) = search_results(params) do |builder|
+        search_builder_class.new([:default_solr_parameters,:build_all_brevudgivelser_search],builder)
+      end
+      render "index"
+    end
+
+    def is_text_search?
+      ['brevudgivelser'].exclude? action_name
+    end
+
+    def has_search_parameters?
+      super || !is_text_search?
+    end
 
   end
 end
