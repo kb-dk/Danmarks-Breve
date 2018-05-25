@@ -1,10 +1,4 @@
 GIT
-  remote: https://github.com/Det-Kongelige-Bibliotek/kbcookie.git
-  revision: 86b3e6fb9da6278a6ba2daa17683c0cc72c3b78f
-  specs:
-    kbcookie (0.0.2)
-
-GIT
   remote: https://github.com/Det-Kongelige-Bibliotek/snippet-gem.git
   revision: bc4d5b2d3091fec2d7f68dcf6e644be87df30b14
   specs:
@@ -266,7 +260,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jettywrapper (>= 2.0)
   jquery-rails
-  kbcookie!
   rails (< 5)
   rsolr (~> 1.0)
   sass-rails (~> 5.0)

@@ -60,7 +60,6 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 gem 'high_voltage', '~> 3.0.0'
-gem 'kbcookie', '>=0.0.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/kbcookie.git'
 gem 'snippet_server', '>=0.1.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/snippet-gem.git'
 
 gem 'blacklight_range_limit', '>= 6'
