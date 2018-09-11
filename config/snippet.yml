@@ -1,6 +1,6 @@
 development:
-  snippet_server_url: http://valhal-test-01.kb.dk:8080/exist/rest/db/letter_books
-  snippet_server_url_with_admin: http://admin@valhal-test-01.kb.dk:8080/exist/rest/db/letter_books
+  snippet_server_url: http://xstorage-stage-01.kb.dk:8080/exist/rest/db/letter_books/
+  snippet_server_url_with_admin: http://admin@xstorage-stage-01.kb.dk:8080/exist/rest/db/letter_books/
   snippet_server_user: admin
   snippet_server_password: admin123
   get_snippet_script: present.xq
