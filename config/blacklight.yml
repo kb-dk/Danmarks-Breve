@@ -18,4 +18,4 @@ test: &test
   url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8888}/solr/letters-core" %>
 production:
   adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://bifrost-solr-prod-01.kb.dk:8080/solr/letters-core" %>
+  url: <%= ENV['SOLR_URL'] || "http://index-stage.kb.dk/solr/letters-core" %>
