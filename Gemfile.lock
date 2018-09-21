@@ -261,7 +261,7 @@ DEPENDENCIES
   rsolr (~> 1.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  snippet_server (>= 0.1.0)!
+  snippet_server (>= 0.1.1)!
   spring
   sqlite3
   therubyracer
