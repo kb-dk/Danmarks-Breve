@@ -163,49 +163,54 @@ class CatalogController < ApplicationController
 
     config.add_search_field(I18n.t('blacklight.search.sender')) do |field|
 
+      # Those local_params are not used in text service. They seem to be
+      # suitable for older SOLR versions...
+      # <ignore>
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
+      # </ignore>
       field.solr_local_parameters = {
-          qf: '$sender_qf',
-          pf: '$sender_pf'
       }
       field.solr_parameters = {
-          fq: 'cat_ssi:letter'
+          fq: 'cat_ssi:letter',
+          qf: 'sender_tesim',
+          pf: 'sender_tesim'
       }
     end
 
     config.add_search_field(I18n.t('blacklight.search.recipient')) do |field|
 
       field.solr_local_parameters = {
-          qf: '$recipient_qf',
-          pf: '$recipient_pf'
       }
       field.solr_parameters = {
-          fq: 'cat_ssi:letter'
+          fq: 'cat_ssi:letter',
+          qf: 'recipient_tesim',
+          pf: 'recipient_tesim'
       }
     end
 
     config.add_search_field(I18n.t('blacklight.search.senders_location')) do |field|
 
       field.solr_local_parameters = {
-          qf: '$sender_location_qf',
-          pf: 'sender_location_pf'
       }
       field.solr_parameters = {
-          fq: 'cat_ssi:letter'
+          fq: 'cat_ssi:letter',
+          qf: 'sender_location_tesim',
+          pf: 'sender_location_tesim'
+
       }
     end
 
     config.add_search_field(I18n.t('blacklight.search.recipients_location')) do |field|
 
       field.solr_local_parameters = {
-          qf: '$recipient_location_qf',
-          pf: '$recipient_location_pf'
       }
       field.solr_parameters = {
-          fq: 'cat_ssi:letter'
+          fq: 'cat_ssi:letter',
+          qf: 'recipient_location_tesim',
+          pf: 'recipient_location_tesim'
       }
     end
 
