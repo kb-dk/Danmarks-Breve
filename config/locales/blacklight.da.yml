@@ -34,7 +34,6 @@ da:
       saved_searches: 'Gemte søgninger'
       search_history: 'Søgehistorik'
 
-
     welcome: 'Welcome!'
     and: 'og'
     or: 'eller'
@@ -44,6 +43,7 @@ da:
         add:
           button: 'Tilføj til bogmærker'
       title: 'Bogmærker'
+      page_title: 'Bogmærker'
       no_bookmarks: 'Du har ingen bogmærker'
       add:
         button: 'Tilføj til bogmærker'

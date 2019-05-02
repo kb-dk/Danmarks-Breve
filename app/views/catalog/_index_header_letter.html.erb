@@ -16,7 +16,17 @@
       </span-->
     <% end %>
     <span class="glyphicon glyphicon-envelope"></span>
-    <%= link_to_document document %>
+    <% if !document.empty?
+       date = document["date_ssim"] ? "(#{document["date_ssim"][0]})" : "" 
+       to   = document["recipient_tesim"] ? "TIL: #{document["recipient_tesim"][0]}" : ""
+       from = document["sender_tesim"] ?    "FRA: #{document["sender_tesim"][0]}" : ""
+       tit = "BREV #{to} #{from} #{date}" 
+       end
+    %>
+
+    <%= link_to(tit, solr_document_path(document)) %>
+
+    <!--  link_to_document document -->
   </h4>
 
   <%= document_actions %>

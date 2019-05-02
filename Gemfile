@@ -4,12 +4,12 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.11'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # a general solution for modals
 gem 'bootstrap-modal-rails'
-
+gem "bootstrap-sass", ">= 3.4.1"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -62,7 +62,7 @@ gem 'wkhtmltopdf-binary'
 gem 'high_voltage', '~> 3.0.0'
 gem 'kbcookie', '>=0.0.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/kbcookie.git'
 
-gem 'blacklight_range_limit', '>= 6'
+gem 'blacklight_range_limit', '~> 6.3.2'
 gem 'exception_handler', '~> 0.5.0'
 gem 'font-awesome-rails'
 
