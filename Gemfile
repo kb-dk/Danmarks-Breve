@@ -1,21 +1,26 @@
 source 'https://rubygems.org'
 
+gem 'blacklight', ">= 6.0.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.11'
+# gem 'rails', '~> 4.2.11'
+gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# gem 'sassc-rails', '~> 2.1.0'
 # a general solution for modals
-gem 'bootstrap-modal-rails'
-gem "bootstrap-sass", ">= 3.4.1"
+#gem "bootstrap", "~> 4.1.3"
+#gem 'bootstrap-modal-rails'
+gem 'bootstrap-sass', '>=3.4.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
+gem 'mini_racer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -24,7 +29,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'blacklight', "~> 6.0"
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 # Use ActiveModel has_secure_password
@@ -53,16 +58,24 @@ end
 
 gem 'jettywrapper', '>= 2.0'
 gem 'rsolr', '~> 1.0'
+
 gem 'devise'
+# gem "devise", ">= 4.7.1"
 gem 'devise-guests', '~> 0.3'
 gem 'devise_cas_authenticatable'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem "rubyzip", ">= 1.3.0"
+gem "loofah", ">= 2.3.1"
+gem "rack", ">= 1.6.12"
+gem "rake", ">= 12.3.3"
+gem 'nokogiri', '~>1.10.8'
+
 gem 'high_voltage', '~> 3.0.0'
 gem 'kbcookie', '>=0.0.0', :git => 'https://github.com/Det-Kongelige-Bibliotek/kbcookie.git'
 
-gem 'blacklight_range_limit', '~> 6.3.2'
+gem 'blacklight_range_limit', '~> 7.0.0'
 gem 'exception_handler', '~> 0.5.0'
 gem 'font-awesome-rails'
 
