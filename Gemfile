@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.11'
+gem 'rails', '>= 4.2.11'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.6'
 # Use SCSS for stylesheets
@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem "nokogiri", ">= 1.10.8"
 gem 'blacklight', "~> 6.0"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
@@ -52,7 +53,7 @@ end
 
 
 gem 'jettywrapper', '>= 2.0'
-gem 'rsolr', '~> 1.0'
+gem 'rsolr', '>= 1.0.6'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'devise_cas_authenticatable'
